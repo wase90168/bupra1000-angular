@@ -7,6 +7,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import {UzerService} from './uzer/uzer.service';
+import {UzerComponent} from './uzer/uzer.component';
 
 @NgModule({
   imports: [
@@ -17,9 +19,11 @@ import { AppComponent } from './app.component';
   declarations: [
     AppComponent,
     SidebarComponent,
-    NavbarComponent
+    NavbarComponent,
+    UzerComponent
   ],
   providers: [
+    UzerService
   ],
   bootstrap: [AppComponent]
 })

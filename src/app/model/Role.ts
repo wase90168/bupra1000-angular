@@ -1,6 +1,6 @@
 import {Uzer} from './Uzer';
 
-export interface Role {
+export class Role {
   id: number;
   name: string;
   description: string;

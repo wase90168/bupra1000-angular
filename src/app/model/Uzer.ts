@@ -1,8 +1,8 @@
 import {Role} from './Role';
 
-export interface Uzer {
-  id: number;
-  userName: string;
+export class Uzer {
+  id: string;
+  username: string;
   password: string;
   roles: Array<Role>;
 }
