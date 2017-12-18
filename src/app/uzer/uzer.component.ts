@@ -8,36 +8,36 @@ import {Uzer} from '../model/Uzer';
 })
 
 export class UzerComponent implements OnInit {
-  todos: Uzer[];
-  newTodo: Uzer = new Uzer();
+  uzers: Uzer[];
+  //newUzer: Uzer = new Uzer();
   editing: boolean = false;
-  editingTodo: Uzer = new Uzer();
+  //editingUzer: Uzer = new Uzer();
 
   ngOnInit(): void {
-    this.getTodos();
+    this.getUzers();
   }
 
-  getTodos(): void {
-
-  }
-
-  createTodo(todoForm: NgForm): void {
+  getUzers(): void {
 
   }
 
-  deleteTodo(id: string): void {
+  createUzer(uzerForm: NgForm): void {
 
   }
 
-  updateTodo(todoData: Todo): void {
+  deleteUzer(id: string): void {
 
   }
 
-  toggleCompleted(todoData: Todo): void {
+  updateUzer(uszerData: Uzer): void {
 
   }
 
-  editTodo(todoData: Todo): void {
+  toggleCompleted(todoData: Uzer): void {
+
+  }
+
+  editUzer(uzerData: Uzer): void {
 
   }
 
