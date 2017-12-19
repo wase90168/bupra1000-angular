@@ -9,6 +9,17 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import {UzerService} from './uzer/uzer.service';
 import {UzerComponent} from './uzer/uzer.component';
+import { TypeComponent } from './type/type.component';
+import { StateComponent } from './state/state.component';
+import { SourceComponent } from './source/source.component';
+import { RoleComponent } from './role/role.component';
+import { MrComponent } from './mr/mr.component';
+import { ValueComponent } from './value/value.component';
+import { PersonComponent } from './person/person.component';
+import { CategoryComponent } from './category/category.component';
+import { BreastfeedingComponent } from './breastfeeding/breastfeeding.component';
+import { DimensionComponent } from './dimension/dimension.component';
+import { PersonPersonComponent } from './person-person/person-person.component';
 
 @NgModule({
   imports: [
@@ -20,7 +31,18 @@ import {UzerComponent} from './uzer/uzer.component';
     AppComponent,
     SidebarComponent,
     NavbarComponent,
-    UzerComponent
+    UzerComponent,
+    TypeComponent,
+    StateComponent,
+    SourceComponent,
+    RoleComponent,
+    MrComponent,
+    ValueComponent,
+    PersonComponent,
+    CategoryComponent,
+    BreastfeedingComponent,
+    DimensionComponent,
+    PersonPersonComponent
   ],
   providers: [
     UzerService
