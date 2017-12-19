@@ -20,12 +20,17 @@ import { CategoryComponent } from './category/category.component';
 import { BreastfeedingComponent } from './breastfeeding/breastfeeding.component';
 import { DimensionComponent } from './dimension/dimension.component';
 import { PersonPersonComponent } from './person-person/person-person.component';
+import { HomeComponent } from './home/home.component';
+import {APP_ROUTES} from "./app.routes";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+
+    RouterModule.forRoot(APP_ROUTES)
   ],
   declarations: [
     AppComponent,
@@ -42,7 +47,8 @@ import { PersonPersonComponent } from './person-person/person-person.component';
     CategoryComponent,
     BreastfeedingComponent,
     DimensionComponent,
-    PersonPersonComponent
+    PersonPersonComponent,
+    HomeComponent
   ],
   providers: [
     UzerService
