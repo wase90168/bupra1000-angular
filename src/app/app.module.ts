@@ -28,7 +28,9 @@ import { LoginComponent } from './login/login.component';
 import {RouterGuard} from './route-guard.service';
 import {UzerLoginService} from './uzer/uzer-login.service';
 import {HttpModule} from '@angular/http';
-import {BASE_URL_OAUTH2_TOKEN_REQUEST, BASE_URL_UZERS, CLIENT_APP_NAME, CLIENT_APP_SECRET} from './app.tokens';
+import {BASE_URL, BASE_URL_OAUTH2_TOKEN_REQUEST, BASE_URL_UZERS, CLIENT_APP_NAME, CLIENT_APP_SECRET} from './app.tokens';
+import { RegisterComponent } from './register/register.component';
+import {RegisterService} from './register/register.service';
 
 
 
@@ -62,12 +64,16 @@ import {BASE_URL_OAUTH2_TOKEN_REQUEST, BASE_URL_UZERS, CLIENT_APP_NAME, CLIENT_A
     DimensionComponent,
     PersonPersonComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   providers: [
     UzerService,
     UzerLoginService,
+    RegisterService,
+    NavbarComponent,
 
+    {provide:BASE_URL, useValue: "http://localhost:8080"},
     {provide:BASE_URL_UZERS, useValue: "http://localhost:8080/uzers"},
     {provide:BASE_URL_OAUTH2_TOKEN_REQUEST, useValue: "http://localhost:8080/oauth/token"},
     {provide:CLIENT_APP_NAME, useValue: "acme"},

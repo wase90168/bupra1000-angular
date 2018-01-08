@@ -8,20 +8,39 @@ import {UzerLoginService} from '../uzer/uzer-login.service';
     selector: 'navbar-cmp',
     templateUrl: 'navbar.component.html'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
 
   constructor(private uzerLoginService:UzerLoginService,private router:Router){
 
   }
 
-  isLoggedIn(): boolean{
-    return this.uzerLoginService.isLoggedIn();
+  ngOnInit(){
+    this.isLoggedIn = this.uzerLoginService.isLoggedIn();
+    return this.isLoggedIn;
   }
+
+  isLoggedIn:boolean;
+  username:string;
+
+  getUsername() {
+    this.username = this.uzerLoginService.getUserInfos().username;
+    return this.username;
+  }
+
 
   logOut() {
     this.uzerLoginService.logOut();
     this.router.navigateByUrl('/login');
+    this.ngOnInit()
   }
+
+  logIn() {
+    this.ngOnInit()
+
+    this.router.navigateByUrl('/login');
+  }
+
+
 
 
   private sidebarVisible: boolean = false;

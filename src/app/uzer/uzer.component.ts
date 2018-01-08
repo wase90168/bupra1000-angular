@@ -22,6 +22,8 @@ export class UzerComponent implements OnInit {
     this.getUzers();
   }
 
+
+
   getUzers(): void {
     this.uzerService.getUzers()
       .then(uzers => this.uzers = uzers );

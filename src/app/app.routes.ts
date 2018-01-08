@@ -2,11 +2,15 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from "./home/home.component";
 import {LoginComponent} from './login/login.component';
 import {RouterGuard} from './route-guard.service';
+import {RegisterComponent} from './register/register.component';
+import {NavbarComponent} from './navbar/navbar.component';
+import {AppComponent} from './app.component';
+import {UzerComponent} from './uzer/uzer.component';
 
 export const APP_ROUTES: Routes = [
   /*{
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },*/
   {
@@ -14,7 +18,7 @@ export const APP_ROUTES: Routes = [
     component: HomeComponent,
     canActivate: [RouterGuard]
   },
-  /*{
+ /* {
     path: '**',
     redirectTo: 'home'
   },*/
@@ -22,6 +26,15 @@ export const APP_ROUTES: Routes = [
     path: 'login',
     component: LoginComponent
   },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'uzer',
+    component: UzerComponent
+  },
+
 
 ];
 

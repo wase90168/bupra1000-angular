@@ -6,11 +6,20 @@
         </div>
         <div class="collapse navbar-collapse">
 
+          <div *ngIf="!ngOnInit()" class="omb_login">
+
           <div class="navbar-right right-float">
-            <a routerLink="/logout" (click)="logOut()" type="button" class="btn btn-default navbar-btn right-pull">
-              <span class="glyphicon glyphicon-log-out"></span> Log Out</a>
+            <a routerLink="/login" (click)="logIn()" type="button" class="btn btn-default navbar-btn right-pull">
+              <span class="glyphicon glyphicon-log-out"></span> Log In</a>
+          </div>
           </div>
 
+          <div *ngIf="ngOnInit()" class="omb_login">
+          <div class="navbar-right right-float">
+            <a routerLink="/login" (click)="logOut()" type="button" class="btn btn-default navbar-btn right-pull">
+              <span class="glyphicon glyphicon-log-out"></span> Log Out {{getUsername()}}</a>
+          </div>
+          </div>
 
         </div>
 

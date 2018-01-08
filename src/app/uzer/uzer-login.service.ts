@@ -12,13 +12,23 @@ export class UzerLoginService {
 
   }
 
+  private _storage: Storage = localStorage;
+
   public setStorage(storage: Storage) {
     this._storage = storage;
   }
 
-  private _storage: Storage = localStorage;
 
 
+   _message: string;
+
+  setMessage(value: string) {
+    this._message = value;
+  }
+
+  getMessage(): string {
+    return this._message;
+  }
 
   loadUserProfile(userName:string) {
     if (!this.hasValidAccessToken()) throw Error("Cannot load User Profile without access_token");
@@ -79,7 +89,6 @@ export class UzerLoginService {
       .fetchTokenUsingPasswordFlow(userName, password)
       .then(() => this.loadUserProfile(userName));
   }
-
 
 
 
