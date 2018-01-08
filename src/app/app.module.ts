@@ -23,12 +23,25 @@ import { PersonPersonComponent } from './person-person/person-person.component';
 import { HomeComponent } from './home/home.component';
 import {APP_ROUTES} from "./app.routes";
 import {RouterModule} from "@angular/router";
+import { LoginComponent } from './login/login.component';
+
+import {RouterGuard} from './route-guard.service';
+import {UzerLoginService} from './uzer/uzer-login.service';
+import {HttpModule} from '@angular/http';
+import {BASE_URL_OAUTH2_TOKEN_REQUEST, BASE_URL_UZERS, CLIENT_APP_NAME, CLIENT_APP_SECRET} from './app.tokens';
+
+
+
+
+
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    HttpModule,
+
 
     RouterModule.forRoot(APP_ROUTES)
   ],
@@ -48,10 +61,21 @@ import {RouterModule} from "@angular/router";
     BreastfeedingComponent,
     DimensionComponent,
     PersonPersonComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   providers: [
-    UzerService
+    UzerService,
+    UzerLoginService,
+
+    {provide:BASE_URL_UZERS, useValue: "http://localhost:8080/uzers"},
+    {provide:BASE_URL_OAUTH2_TOKEN_REQUEST, useValue: "http://localhost:8080/oauth/token"},
+    {provide:CLIENT_APP_NAME, useValue: "acme"},
+    {provide:CLIENT_APP_SECRET, useValue: "Pa$$w0rd"},
+
+    RouterGuard
+
+
   ],
   bootstrap: [AppComponent]
 })
