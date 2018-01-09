@@ -39,7 +39,6 @@ import {LoginComponent} from './login/login.component';
     HttpClientModule,
     HttpModule,
 
-
     RouterModule.forRoot(APP_ROUTES)
   ],
   declarations: [
@@ -60,7 +59,8 @@ import {LoginComponent} from './login/login.component';
     PersonPersonComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+
   ],
   providers: [
     UzerService,

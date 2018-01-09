@@ -11,5 +11,5 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  add():void{}
 }
