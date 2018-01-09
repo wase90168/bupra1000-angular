@@ -1,0 +1,54 @@
+
+<div class="container">
+  <div class="row main">
+    <div class="panel-heading">
+      <div class="panel-title text-center">
+        <h1 class="title">Create Account</h1>
+        <hr />
+      </div>
+    </div>
+    <div class="main-login main-center">
+      <!-- ALERT -->
+      <div *ngIf="(message)" [ngClass]="(success)? 'alert-success show' : 'alert alert-danger show'" class="alert step" role="alert">
+        {{message}}
+      </div>
+      <!-- ALERT END -->
+      <form #f="ngForm" class="form-horizontal" novalidate>
+
+
+
+
+        <div class="form-group">
+          <label for="username" class="cols-sm-2 control-label">Your Username</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span [ngStyle]="{'background-color': (f?.controls?.username?.valid)? 'green' : ''}" class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+              <input [(ngModel)]="username" pattern="[a-z|A-Z]*" required type="username" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>
+            </div>
+          </div>
+          <span *ngIf="f?.controls?.username?.hasError('pattern')" class="help-block">The format of the username address is invalid!</span>
+        </div>
+
+
+        <div class="form-group">
+          <label for="password" class="cols-sm-2 control-label">New Password</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span [ngStyle]="{'background-color': (f?.controls?.password?.valid)? 'green' : ''}" class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+              <input [(ngModel)]="password" required type="password" class="form-control" name="password" id="password"  placeholder="Type in your desired password"/>
+            </div>
+          </div>
+          <span *ngIf="f?.controls?.password?.hasError('required')" class="help-block">This field is required!</span>
+        </div>
+
+
+        <div class="form-group ">
+          <button [disabled]="!f.valid" type="submit" class="btn btn-primary btn-lg btn-block login-button" (click)="save()" >Register</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
