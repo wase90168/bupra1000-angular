@@ -1,4 +1,4 @@
-import {Uzer} from '../uzer/Uzer';
+import {Uzer} from '../uzer/uzer';
 
 export class Role {
   id: number;

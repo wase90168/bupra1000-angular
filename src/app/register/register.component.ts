@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import {Uzer} from '../uzer/Uzer';
+import {Uzer} from '../uzer/uzer';
 import {RegisterService} from './register.service';
 import {Router} from '@angular/router';
 import {UzerLoginService} from '../uzer/uzer-login.service';

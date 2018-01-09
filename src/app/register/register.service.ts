@@ -2,7 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import {Headers, URLSearchParams} from '@angular/http';
 import {BASE_URL_OAUTH2_TOKEN_REQUEST, BASE_URL_UZERS, CLIENT_APP_NAME, CLIENT_APP_SECRET} from '../app.tokens';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {Uzer} from '../uzer/Uzer';
+import {Uzer} from '../uzer/uzer';
 
 @Injectable()
 export class RegisterService {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Value} from './value';
 
 @Component({
   selector: 'app-value',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./value.component.css']
 })
 export class ValueComponent implements OnInit {
+
+  public selectedValue : Value;
 
   constructor() { }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UzerService } from './uzer.service';
 import {NgForm} from '@angular/forms';
-import {Uzer} from './Uzer';
+import {Uzer} from './uzer';
 
 @Component({
   selector: 'uzer',

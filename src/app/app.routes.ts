@@ -43,51 +43,75 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'uzer',
-    component: UzerComponent
+    component: UzerComponent,
+    canActivate: [RouterGuard]
+
   },
   {
     path: 'value',
-    component: ValueComponent
+    component: ValueComponent,
+    canActivate: [RouterGuard]
+
   },
   {
     path: 'type',
-    component: TypeComponent
+    component: TypeComponent,
+    canActivate: [RouterGuard]
+
   },
   {
     path: 'state',
-    component: StateComponent
+    component: StateComponent,
+    canActivate: [RouterGuard]
+
   },
   {
     path: 'source',
-    component: SourceComponent
+    component: SourceComponent,
+    canActivate: [RouterGuard]
+
   },
   {
     path: 'role',
-    component: RoleComponent
+    component: RoleComponent,
+    canActivate: [RouterGuard]
+
   },
   {
     path: 'person',
-    component: PersonComponent
+    component: PersonComponent,
+    canActivate: [RouterGuard]
+
   },
   {
     path: 'personperson',
-    component: PersonPersonComponent
+    component: PersonPersonComponent,
+    canActivate: [RouterGuard]
+
   },
   {
     path: 'mr',
-    component: MrComponent
+    component: MrComponent,
+    canActivate: [RouterGuard]
+
   },
   {
     path: 'dimension',
-    component: DimensionComponent
+    component: DimensionComponent,
+    canActivate: [RouterGuard]
+
   },
   {
     path: 'category',
-    component: CategoryComponent
+    component: CategoryComponent,
+    canActivate: [RouterGuard]
+
   },
   {
     path: 'breastfeeding',
-    component: BreastfeedingComponent
+    component: BreastfeedingComponent,
+    canActivate: [RouterGuard]
+
   },
 
 

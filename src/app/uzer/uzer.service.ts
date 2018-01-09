@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
-import {Uzer} from './Uzer';
+import {Uzer} from './uzer';
 import {HttpClient} from '@angular/common/http';
 import {BASE_URL_UZERS} from '../app.tokens';
 import {Inject} from '@angular/compiler/src/core';
