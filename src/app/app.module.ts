@@ -30,6 +30,10 @@ import {BASE_URL, BASE_URL_OAUTH2_TOKEN_REQUEST, BASE_URL_UZERS, CLIENT_APP_NAME
 import { RegisterComponent } from './register/register.component';
 import {RegisterService} from './register/register.service';
 import {LoginComponent} from './login/login.component';
+import {ValueService} from './value/value.service';
+import {ValueResolverService} from './value/value-resolver.service';
+import { ValueEditComponent } from './value/value-edit/value-edit/value-edit.component';
+import {CommonModule} from '@angular/common';
 
 
 @NgModule({
@@ -37,6 +41,8 @@ import {LoginComponent} from './login/login.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    CommonModule,
+
     HttpModule,
 
     RouterModule.forRoot(APP_ROUTES)
@@ -60,6 +66,7 @@ import {LoginComponent} from './login/login.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+    ValueEditComponent,
 
   ],
   providers: [
@@ -67,6 +74,8 @@ import {LoginComponent} from './login/login.component';
     UzerLoginService,
     RegisterService,
     NavbarComponent,
+    ValueService,
+    ValueResolverService,
 
     {provide:BASE_URL, useValue: "http://localhost:8080"},
     {provide:BASE_URL_UZERS, useValue: "http://localhost:8080/uzers"},

@@ -1,8 +1,9 @@
 import {Uzer} from '../uzer/uzer';
+import {Observable} from 'rxjs/Observable';
 
 export class Role {
   id: number;
   name: string;
   description: string;
-  uzers: Array<Uzer>;
+  uzers: Observable<Uzer>;
 }

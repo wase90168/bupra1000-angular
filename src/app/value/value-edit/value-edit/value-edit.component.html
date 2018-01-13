@@ -1,0 +1,45 @@
+<h1>Car Edit!</h1>
+<div>
+  {{ message }}
+</div>
+
+<div *ngIf="value">
+  <div class="form-group">
+    <label>Value</label>
+    <input [(ngModel)]="value.value" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>State</label>
+    <input [(ngModel)]="value.state.text" class="form-control" readonly>
+  </div>
+  <div class="form-group">
+    <label>Person</label>
+    <input [(ngModel)]="value.person.suffix" class="form-control"  readonly>
+  </div>
+  <div class="form-group">
+    <label>MR</label>
+    <input [(ngModel)]="value.mr.name" class="form-control" readonly >
+  </div>
+  <div class="form-group">
+    <label>Source</label>
+    <input [(ngModel)]="value.source.name" class="form-control" readonly >
+  </div>
+  <div class="form-group">
+    <label>Dimension</label>
+    <input [(ngModel)]="value.dimension.dimension" class="form-control" readonly >
+  </div>
+  <!--<div>
+    <label>Select:</label>
+    <select [(ngModel)]="selectedValue">
+      <option *ngFor="let c of data" [ngValue]="c">{{c.value}}</option>
+    </select>
+  </div>-->
+
+</div>
+
+<div class="form-group">
+  <button (click)="save()" class="btn btn-default" [routerLink]="['/value']">Save</button>
+
+</div>
+
+
