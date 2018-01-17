@@ -18,8 +18,8 @@ import {DimensionComponent} from './dimension/dimension.component';
 import {CategoryComponent} from './category/category.component';
 import {BreastfeedingComponent} from './breastfeeding/breastfeeding.component';
 import {ValueService} from './value/value.service';
-import {ValueResolverService} from './value/value-resolver.service';
 import {ValueEditComponent} from './value/value-edit/value-edit/value-edit.component';
+import {ValueEditResolverService} from './value/value-edit/value-edit/value-edit-resolver.service';
 
 export const APP_ROUTES: Routes = [
   /*{
@@ -54,15 +54,14 @@ export const APP_ROUTES: Routes = [
     path: 'value',
     component: ValueComponent,
     canActivate: [RouterGuard],
-    resolve: {
-      valuesToken: ValueResolverService
-    }
-
   },
   {
     path: 'value-edit/:id',
     component: ValueEditComponent,
     canActivate: [RouterGuard],
+    resolve: {
+      valuesToken: ValueEditResolverService
+    }
 
 
   },

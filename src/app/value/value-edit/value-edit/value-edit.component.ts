@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {ValueService} from '../../value.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Value} from '../../value';
+import {Observable} from 'rxjs/Observable';
+import {ValueComponent} from '../../value.component';
 
 @Component({
   selector: 'app-value-edit',
@@ -12,33 +14,40 @@ import {Value} from '../../value';
 export class ValueEditComponent implements OnInit {
 
   id: string;
-  public data: any;
 
   value: Value;
 
-  constructor(private valueService: ValueService, private route: ActivatedRoute) {
+  constructor(private valueService: ValueService, private route: ActivatedRoute, private router: Router) {
 
-    route.params.subscribe(
-      c => {
-        this.id = c['id'];
-        this.load(this.id);
-      }
-    )
+
   }
 
   ngOnInit() {
 
-    this.data = this.route.snapshot.data;
+    this.route.data.subscribe(
+      data => {
+        this.value = data['valuesToken'];
+      }
+    );
+
+    //this.data = this.route.snapshot.data;
 
   }
 
   load(id: string): void {
-    this.value = this.valueService.findById(id)
+    this.valueService.findById(id)
 
   }
 
-  save(){
-    this.valueService.saveValue(this.value);
+  save(value: Value){
+    this.valueService.updateValue(value);
+
+
+
+
+    this.router.navigateByUrl("value");
+
   }
 
 }
+

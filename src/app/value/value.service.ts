@@ -1,9 +1,8 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Value} from './value';
 import {UzerLoginService} from '../uzer/uzer-login.service';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {Http} from '@angular/http';
 
 @Injectable()
 export class ValueService  {
@@ -13,12 +12,6 @@ export class ValueService  {
 
 
   private valuesUrl = 'http://localhost:8080/values';
-
-
-
-  public values: Observable<Value>;
-
-  public value: any;
 
   constructor(private uzerLoginService: UzerLoginService, private http: HttpClient) { }
 
@@ -30,20 +23,14 @@ export class ValueService  {
     headers.set('Authorization', this.uzerLoginService.authorizationHeader());
 
 
-    this
+    return this
       .http
       .get(url, {headers: headers})
-      .subscribe(data => {this.values = data['_embedded']['values']});
-
-
-    return this.values;
-
-
-
+      .map(data => {return data['_embedded']});
 
   }
 
-  public findById(id:string): Value {
+  public findById(id:string): Observable<Value> {
     let url = this.valuesUrl + "/" + id +"?projection=inlineValue";
     let params = new HttpParams();
     let headers = new HttpHeaders();
@@ -51,34 +38,32 @@ export class ValueService  {
     headers.set('Authorization', this.uzerLoginService.authorizationHeader());
 
 
-    this
+     return this
       .http
       .get(url, {headers: headers})
-      .subscribe(data => {
-        this.value = data
-      });
-    return this.value;
-
-
+      .map((data: Value) => {return data});
 
 
   }
 
-  public saveValue(valueData: Value): Promise<any> {
+  public updateValue(valueData: Value): Promise<any> {
     let url = this.valuesUrl + "/" + valueData.id;
     let headers = new HttpHeaders();
     headers.set('Accept', 'application/json');
     headers.set('Authorization', this.uzerLoginService.authorizationHeader());
-    return this.http.put(url, valueData).toPromise()
+    return this.http.put(url, valueData).toPromise();
 
 }
 
+  public deleteValue(id: string): Promise<any>{
+    let url = this.valuesUrl + "/" + id;
+    let headers = new HttpHeaders();
+    headers.set('Accept', 'application/json');
+    headers.set('Authorization', this.uzerLoginService.authorizationHeader());
+    return this.http.delete(url).toPromise();
 
 
-
-
-
-
+  }
 
 
 }

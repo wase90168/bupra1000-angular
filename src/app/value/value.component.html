@@ -1,7 +1,8 @@
 
 
 <div>
-<table  class="table table-responsive">
+  <table class="table table-responsive">
+  <thead >
   <tr>
     <td><b>ID</b></td>
     <td><b>Value</b></td>
@@ -10,10 +11,12 @@
     <td><b>MR</b></td>
     <td><b>Source</b></td>
     <td><b>Dimension</b></td>
-    <td><b>Edit</b></td>
+    <td><b>Actions</b></td>
 
   </tr>
-  <tr *ngFor="let c of data" [ngStyle]="{ 'background-color': (c == selectedValue) ? 'lightblue' : ''  }">
+  </thead>
+<tbody>
+  <tr *ngFor="let c of data" class="active" [ngStyle]="{ 'background-color': (c == selectedValue) ? 'lightblue' : ''  }">
     <td>{{c.id}}</td>
     <td>{{c.value}}</td>
     <!--<td>{{c.state}}</td>-->
@@ -21,21 +24,39 @@
     <td>{{c.mr.name}}</td>
     <td>{{c.source.name}}</td>
     <td>{{c.dimension.name}} </td>
-    <td><button class="btn" (click)="select(c)"><span class="glyphicon glyphicon-cog"></span></button></td>
+    <td>
+      <button class="btn" (click)="select(c)"><span class="glyphicon glyphicon-cog"></span></button>
+    </td>
+    <td>
+    <form class="form-horizontal" role="form" (submit)="deleteEntry(c.id)">
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-primary"/>
+      </div>
+    </form>
+    </td>
   </tr>
-
+</tbody>
 </table>
+
+
+
+
 <table class="table table-responsive">
   <td><button class="btn" (click)="addValue()"><span class="glyphicon glyphicon-plus" ></span></button></td>
 </table>
 </div>
 
-<div *ngIf="selectedValue" class="col-md-2 values-actions">
-  <h4>Actions:</h4>
-  <button class="btn"class="btn btn-warning" [routerLink]="['/value-edit', selectedValue.id]">Edit</button>
+<div *ngIf="message" class="col-md-2 values-actions">
+  <h4>{{message}}</h4>
+
   <!--<button class="btn"class="btn btn-danger" (click)="deleteEntry(selectedValue)" >Delete</button>-->
 </div>
 
+<div *ngIf="selectedValue" class="col-md-2 values-actions">
+  <h4>Actions:</h4>
+  <button class="btn" class="btn btn-warning" (click)="editValue()">Edit</button>
+  <!--<button class="btn"class="btn btn-danger" (click)="deleteEntry(selectedValue)" >Delete</button>-->
+</div>
 
 
 
