@@ -1,3 +1,53 @@
-<p>
-  person-person works!
-</p>
+<div>
+  <table class="table table-responsive">
+    <thead>
+    <tr>
+      <td><b>ID</b></td>
+      <td><b>Baby</b></td>
+      <!--<td><b>State</b></td>-->
+      <td><b>Mother</b></td>
+      <td><b>Breastfeeding</b></td>
+
+      <td><b>Edit</b></td>
+      <td><b>Delete</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let c of data" class="active"
+        [ngStyle]="{ 'background-color': (c == selectedValue) ? 'lightblue' : ''  }">
+      <td>{{c.id}}</td>
+      <td>{{c.baby.prefix}} {{c.baby.suffix}}</td>
+      <!--<td>{{c.state}}</td>-->
+      <td>{{c.mother.prefix}} {{c.mother.suffix}}</td>
+      <td>{{c.breastfeeding.description}}</td>
+      <td>
+        <!--  <button class="btn" (click)="select(c)"><span class="glyphicon glyphicon-cog"></span></button>-->
+        <form class="form-horizontal" role="form" (submit)="editPerson_Person(c.id)">
+          <div class="form-group">
+            <input type="submit" value="Edit" class="btn btn-warning"/>
+          </div>
+        </form>
+      </td>
+      <td>
+        <form class="form-horizontal" role="form" (submit)="deleteEntry(c.id)">
+          <div class="form-group">
+            <input type="submit" value="Delete" class="btn btn-danger"/>
+          </div>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <table class="table table-responsive">
+    <td>
+      <button class="btn" (click)="addPerson_Person()"><span class="glyphicon glyphicon-plus"></span></button>
+    </td>
+  </table>
+</div>
+
+<div *ngIf="message" class="col-md-2 values-actions">
+  <h4>{{message}}</h4>
+
+  <!--<button class="btn"class="btn btn-danger" (click)="deleteEntry(selectedValue)" >Delete</button>-->
+</div>
+

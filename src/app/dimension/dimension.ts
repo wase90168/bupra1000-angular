@@ -8,5 +8,4 @@ export class Dimension {
   dimension:string;
   description:string;
   category:Category;
-  values:Observable<Value>;
 }

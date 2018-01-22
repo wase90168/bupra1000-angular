@@ -13,8 +13,8 @@ export class RouterGuard implements CanActivate {
     state: RouterStateSnapshot) {
 
     let isLoggedIn = this.uzerLoginService.isLoggedIn();
-    let hasAccessToken = this.uzerLoginService.hasValidAccessToken();
 
-    return (isLoggedIn && hasAccessToken);
+
+    return (isLoggedIn);
   }
 }

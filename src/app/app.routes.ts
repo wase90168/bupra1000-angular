@@ -20,6 +20,9 @@ import {BreastfeedingComponent} from './breastfeeding/breastfeeding.component';
 import {ValueService} from './value/value.service';
 import {ValueEditComponent} from './value/value-edit/value-edit/value-edit.component';
 import {ValueEditResolverService} from './value/value-edit/value-edit/value-edit-resolver.service';
+import {PersonPersonEditComponent} from "./person-person/person-person-edit/person-person-edit.component";
+import {PersonPersonEditResolverService} from "./person-person/person-person-edit/person-person-edit-resolver.service";
+import {PersonPersonResolverService} from "./person-person/person-person-resolver.service";
 
 export const APP_ROUTES: Routes = [
   /*{
@@ -60,11 +63,13 @@ export const APP_ROUTES: Routes = [
     component: ValueEditComponent,
     canActivate: [RouterGuard],
     resolve: {
-      valuesToken: ValueEditResolverService
+      value: ValueEditResolverService
     }
 
 
+
   },
+
   {
     path: 'type',
     component: TypeComponent,
@@ -96,9 +101,19 @@ export const APP_ROUTES: Routes = [
 
   },
   {
-    path: 'personperson',
+    path: 'person-person',
     component: PersonPersonComponent,
-    canActivate: [RouterGuard]
+    canActivate: [RouterGuard],
+
+
+  },
+  {
+    path: 'person-person-edit/:id',
+    component: PersonPersonEditComponent,
+    canActivate: [RouterGuard],
+    resolve: {
+      person_person: PersonPersonEditResolverService
+    }
 
   },
   {

@@ -6,5 +6,4 @@ export class Type {
   id:string;
   character:string;
   type:Type;
-  persons:Observable<Person>;
 }

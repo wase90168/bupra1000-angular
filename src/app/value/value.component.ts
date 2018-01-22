@@ -10,45 +10,42 @@ import {ProviderOverride} from '@angular/core/src/view';
   templateUrl: './value.component.html',
   styleUrls: ['./value.component.css']
 })
-export class ValueComponent implements OnInit, OnDestroy {
+export class ValueComponent implements OnInit {
 
-  public selectedValue : Value;
   public data: Observable<Value>;
   public message: string;
 
 
   constructor(private route: ActivatedRoute, private router: Router,  private valueService: ValueService) {
+
   }
 
   ngOnInit()
   {
     this.getData();
+
+    console.log(this.getData());
   }
 
-  ngOnDestroy()
-  {
 
 
-
-
-  }
-
-  select(value: Value): void
-  {
-    this.selectedValue = value;
-  }
 
   getData()
   {
-    this.valueService.findAll().subscribe( (data) => this.data = data['values']);
-    console.log(this.data);
+    this.valueService.findAll().subscribe( (datax: Value) => this.data = datax['values']);
 
   }
+
 
   addValue()
   {
-    return "hallo";
+
+    this.router.navigateByUrl("value-edit/0");
+
   }
+
+
+
 
   deleteEntry(id: string){
 
@@ -56,17 +53,11 @@ export class ValueComponent implements OnInit, OnDestroy {
 
         this.ngOnInit();
       })
-    //this.valueService.findAll()
-      //this.getData();
-
-
-
-
 
   }
 
-  editValue(){
-    this.router.navigateByUrl("value-edit/" + this.selectedValue.id);
+  editValue(id: string){
+    this.router.navigateByUrl("value-edit/" + id);
   }
 
 

@@ -4,6 +4,5 @@ import {Observable} from 'rxjs/Observable';
 export class Category {
   id: string;
   name: string;
-  dimensions: Observable<Dimension>;
 
 }

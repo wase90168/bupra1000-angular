@@ -6,5 +6,4 @@ export class State {
   text: string;
   description: string;
   null_allowed: boolean;
-  values: Observable<Value>;
 }

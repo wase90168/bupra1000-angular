@@ -33,7 +33,21 @@ import {LoginComponent} from './login/login.component';
 import {ValueService} from './value/value.service';
 import { ValueEditComponent } from './value/value-edit/value-edit/value-edit.component';
 import {CommonModule} from '@angular/common';
-import {ValueEditResolverService} from './value/value-edit/value-edit/value-edit-resolver.service';
+import {BreastfeedingService} from "./breastfeeding/breastfeeding.service";
+import {CategoryService} from "./category/category.service";
+import {DimensionService} from "./dimension/dimension.service";
+import {MrService} from "./mr/mr.service";
+import {PersonService} from "./person/person.service";
+import {SourceService} from "./source/source.service";
+import {StateService} from "./state/state.service";
+import {TypeService} from "./type/type.service";
+import {AppService} from "./app.service";
+import {ValueEditResolverService} from "./value/value-edit/value-edit/value-edit-resolver.service";
+import { PersonPersonEditComponent } from './person-person/person-person-edit/person-person-edit.component';
+import {PersonPersonEditResolverService} from "./person-person/person-person-edit/person-person-edit-resolver.service";
+import {Person_PersonService} from "./person-person/person-person.service";
+import {PersonPersonResolverService} from "./person-person/person-person-resolver.service";
+import {OAuthService, UrlHelperService} from "angular-oauth2-oidc";
 
 
 @NgModule({
@@ -67,6 +81,7 @@ import {ValueEditResolverService} from './value/value-edit/value-edit/value-edit
     LoginComponent,
     RegisterComponent,
     ValueEditComponent,
+    PersonPersonEditComponent,
 
   ],
   providers: [
@@ -75,6 +90,24 @@ import {ValueEditResolverService} from './value/value-edit/value-edit/value-edit
     RegisterService,
     NavbarComponent,
     ValueService,
+    BreastfeedingService,
+    CategoryService,
+    DimensionService,
+    MrService,
+    PersonService,
+    Person_PersonService,
+    SourceService,
+    StateService,
+    TypeService,
+    AppService,
+    ValueEditResolverService,
+    PersonPersonEditResolverService,
+    PersonPersonResolverService,
+    OAuthService,
+    UrlHelperService,
+
+
+
 
 
 

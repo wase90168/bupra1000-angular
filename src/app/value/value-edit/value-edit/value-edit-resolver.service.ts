@@ -14,7 +14,13 @@ export class ValueEditResolverService implements  Resolve<any>
 
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Value> | Promise<Value> | Value {
-    return this.valueService.findById(route.params.id);
+
+    if(route.params.id > 0) {
+      return this.valueService.findById(route.params.id);
+    }
+    else {
+      return new Value();
+    }
 
   }
 

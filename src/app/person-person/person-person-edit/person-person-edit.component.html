@@ -1,0 +1,81 @@
+<h1>Baby-Mother Edit!</h1>
+<div>
+  {{ message }}
+</div>
+
+<div *ngIf="person_person.id != null">
+
+  <div class="form-group">
+    <label>Baby</label>
+    <select  class="form-control" [(ngModel)]="person_person.baby">
+      <option [ngValue]="person_person.baby" selected>{{person_person.baby.prefix}} {{person_person.baby.suffix}}</option>
+      <option  *ngFor="let c of babies" [ngValue]="c">{{c.prefix}} {{c.suffix}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Mother</label>
+    <select  class="form-control" [(ngModel)]="person_person.mother">
+      <option [ngValue]="person_person.mother" selected>{{person_person.mother.prefix}} {{person_person.mother.suffix}}</option>
+      <option  *ngFor="let c of mothers" [ngValue]="c">{{c.prefix}} {{c.suffix}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Breastfeeding</label>
+    <select  class="form-control" [(ngModel)]="person_person.breastfeeding">
+      <option [ngValue]="person_person.breastfeeding" selected>{{person_person.breastfeeding.description}}</option>
+      <option  *ngFor="let c of breastfeedings" [ngValue]="c">{{c.description}}</option>
+    </select>
+  </div>
+
+
+
+  <div class="form-group">
+    <button (click)="updatePerson_Person(person_person)" class="btn btn-default">Save</button>
+    <button (click)="cancel()" class="btn btn-default">Cancel</button>
+
+
+  </div>
+
+</div>
+
+
+
+<div *ngIf="person_person.id == null">
+
+  <div class="form-group">
+    <label>Baby</label>
+    <select  class="form-control" [(ngModel)]="person_person.baby">
+      <option  *ngFor="let c of babies" [ngValue]="c">{{c.prefix}} {{c.suffix}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Mother</label>
+    <select  class="form-control" [(ngModel)]="person_person.mother">
+      <option  *ngFor="let c of mothers" [ngValue]="c">{{c.prefix}} {{c.suffix}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Breastfeeding</label>
+    <select  class="form-control" [(ngModel)]="person_person.breastfeeding">
+      <option  *ngFor="let c of breastfeedings" [ngValue]="c">{{c.description}}</option>
+    </select>
+  </div>
+
+
+
+  <div class="form-group">
+    <button (click)="createPerson_Person(person_person)" class="btn btn-default">Save</button>
+    <button (click)="cancel()" class="btn btn-default">Cancel</button>
+
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+

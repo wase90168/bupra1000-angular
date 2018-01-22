@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit{
   username:string;
 
   getUsername() {
-    this.username = this.uzerLoginService.getUserInfos().username;
+    this.username = this.uzerLoginService._storage.getItem('username');
     return this.username;
   }
 

@@ -5,5 +5,4 @@ export class MR {
 id:string;
 name:string;
 description:string;
-values: Observable<Value>;
 }

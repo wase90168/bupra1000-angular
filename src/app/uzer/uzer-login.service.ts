@@ -1,18 +1,33 @@
-import {Http, URLSearchParams, Headers} from "@angular/http";
 import {Inject, Injectable} from "@angular/core";
-import {isNullOrUndefined} from "util";
 import {BASE_URL_OAUTH2_TOKEN_REQUEST, BASE_URL_UZERS, CLIENT_APP_NAME, CLIENT_APP_SECRET} from '../app.tokens';
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {OAuthService} from "angular-oauth2-oidc";
+import {Router} from "@angular/router";
+import {Http} from "@angular/http";
 
 
 @Injectable()
 export class UzerLoginService {
 
-  constructor(private http: Http,@Inject(BASE_URL_UZERS) private uzersUrl:string, @Inject(BASE_URL_OAUTH2_TOKEN_REQUEST) private tokenUrl:string,
-              @Inject(CLIENT_APP_NAME) private clientName:string,@Inject(CLIENT_APP_SECRET) private clientSecret:string){
+  constructor(private http: HttpClient, @Inject(BASE_URL_UZERS) private uzersUrl: string, @Inject(BASE_URL_OAUTH2_TOKEN_REQUEST) private tokenUrl: string,
+              @Inject(CLIENT_APP_NAME) private clientName: string, @Inject(CLIENT_APP_SECRET) private clientSecret: string, private oauthService: OAuthService, private router: Router) {
+
+
 
   }
 
-  private _storage: Storage = localStorage;
+
+  public _storage: Storage = localStorage;
+
+  public _message: string;
+
+  public setMessage(message: string){
+    this._message = message;
+  }
+
+  public getMessage():string{
+    return this._message;
+  }
 
   public setStorage(storage: Storage) {
     this._storage = storage;
@@ -20,31 +35,25 @@ export class UzerLoginService {
 
 
 
-   _message: string;
 
-  setMessage(value: string) {
-    this._message = value;
-  }
 
-  getMessage(): string {
-    return this._message;
-  }
 
-  loadUserProfile(userName:string) {
-    if (!this.hasValidAccessToken()) throw Error("Cannot load User Profile without access_token");
+  loadUserProfile(userName:string, password: string) {
     let findByUsername = "/search/findByUsername";
     return new Promise((resolve, reject) => {
 
-      let headers = new Headers();
-      headers.set('Authorization', 'Bearer ' + this.getAccessToken());
+      let headers = new HttpHeaders();
+      headers.append("Authorization", "Basic " + btoa(userName + ":" + password));
 
-      let search = new URLSearchParams();
-      search.set('username', userName);
+      let params = new URLSearchParams();
+      params.append('username', userName);
 
-      this.http.get(this.uzersUrl+findByUsername, { headers, search }).map(r => r.json()).subscribe(
+      this.http.get(this.uzersUrl+findByUsername+"?"+params.toString(),{headers: headers} ).subscribe(
         (userInfo) => {
           console.debug('userinfo received', userInfo);
           this._storage.setItem('userInfo', JSON.stringify(userInfo));
+          this._storage.setItem('username',userName);
+          this._storage.setItem('password',password);
           resolve(userInfo);
         },
         (err) => {
@@ -57,173 +66,22 @@ export class UzerLoginService {
 
   }
 
-
-
-  refreshUzersData(userName:string){
-    let headers = new Headers();
-    headers.set('Authorization', 'Bearer ' + this.getAccessToken());
-    let findByUsername = "/search/findByUsername";
-    let search = new URLSearchParams();
-    search.set('email', userName);
-    return new Promise((resolve, reject) => {
-      this.http.get(this.uzersUrl + findByUsername, {
-        headers,
-        search
-      }).map(r => r.json()).subscribe(
-        (userInfo) => {
-          this._storage.removeItem("userInfo");
-          this._storage.setItem('userInfo', JSON.stringify(userInfo));
-          resolve(userInfo);
-        },
-        (err) => {
-          console.error('Error while refreshing user info', err);
-          reject(err);
-        }
-      );
-    });
-  }
-
-
-  fetchTokenUsingPasswordFlowAndLoadUserProfile(userName: string, password: string) {
-    return this
-      .fetchTokenUsingPasswordFlow(userName, password)
-      .then(() => this.loadUserProfile(userName));
-  }
-
-
-
-  fetchTokenUsingPasswordFlow(userName: string, password: string) {
-
-    return new Promise((resolve, reject) => {
-      let search = new URLSearchParams();
-      search.set('grant_type', 'password');
-      search.set('username', userName);
-      search.set('password', password);
-
-      let headers = new Headers();
-      headers.set('Content-Type', 'application/x-www-form-urlencoded');
-      headers.set('Authorization', 'Basic ' + btoa(this.clientName + ":" + this.clientSecret));
-
-      let params = search.toString();
-
-      this.http
-        .post(this.tokenUrl, params, { headers })
-        .map(r => r.json())
-        .subscribe((tokenResponse) => {
-            console.debug('tokenResponse', tokenResponse);
-            this.storeAccessTokenResponse(tokenResponse.access_token, tokenResponse.refresh_token, tokenResponse.expires_in);
-
-            resolve(tokenResponse);
-          },
-          (err) => {
-            console.error('Error performing password flow', err);
-            reject(err);
-          }
-        );
-    });
-
-  }
-
-
-
-  refreshToken() {
-
-    return new Promise((resolve, reject) => {
-      let search = new URLSearchParams();
-      search.set('grant_type', 'refresh_token');
-      search.set('refresh_token', this._storage.getItem('refresh_token'));
-
-      let headers = new Headers();
-      headers.set('Content-Type', 'application/x-www-form-urlencoded');
-      headers.set('Authorization', 'Basic ' + btoa(this.clientName + ":" + this.clientSecret));
-
-      let params = search.toString();
-
-      this.http.post(this.tokenUrl, params, { headers }).map(r => r.json()).subscribe(
-        (tokenResponse) => {
-          console.debug('refresh tokenResponse', tokenResponse);
-          this.storeAccessTokenResponse(tokenResponse.access_token, tokenResponse.refresh_token, tokenResponse.expires_in);
-          resolve(tokenResponse);
-        },
-        (err) => {
-          console.error('Error performing password flow', err);
-          reject(err);
-        }
-      );
-    });
-
-  }
-
-
-
-  logOut() {
-    this._storage.clear();
-  };
-
-
-
-
-  private storeAccessTokenResponse(accessToken: string, refreshToken: string, expiresIn: number) {
-    this._storage.setItem("access_token", accessToken);
-
-    if (expiresIn) {
-      let expiresInMilliSeconds = expiresIn * 1000;
-      let now = new Date();
-      let expiresAt = now.getTime() + expiresInMilliSeconds;
-      this._storage.setItem("expires_at", "" + expiresAt);
+  isLoggedIn(){
+    if(this._storage.getItem('username') == null){
+      return false
     }
-
-    if (refreshToken) {
-      this._storage.setItem("refresh_token", refreshToken);
+    else {
+      return true
     }
   }
 
-
-  getAccessToken() {
-    return this._storage.getItem("access_token");
-  };
-
-  getIdToken() {
-    return this._storage.getItem("id_token");
-  }
-
-  getIdentityClaims() {
-    let claims = this._storage.getItem("userInfo");
-    if (!claims) return null;
-    return JSON.parse(claims);
-  }
-
-  getUserInfos() {
-    return JSON.parse(this._storage.getItem("userInfo"));
+  authorizationHeader(){
+    return "Basic " + btoa(this._storage.getItem('username') + ":" + this._storage.getItem('password'));
   }
 
 
-
-  hasValidAccessToken() {
-    if (this.getAccessToken()) {
-
-      let expiresAt = this._storage.getItem("expires_at");
-      let now = new Date();
-      return !(expiresAt && parseInt(expiresAt) < now.getTime());
-
-
-    }
-    return false;
-  };
-
-
-
-  isLoggedIn(): boolean{
-    if(!isNullOrUndefined(this.getAccessToken()) && !isNullOrUndefined(this.getUserInfos())){
-      return true;
-    }
-    else return false;
-  }
-
-
-
-  authorizationHeader() {
-    return "Bearer " + this.getAccessToken();
+  logOut(){
+    this._storage.clear()
   }
 
 }

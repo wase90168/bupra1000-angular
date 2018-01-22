@@ -8,6 +8,5 @@ export class Person {
   prefix: string;
   suffix: string;
   type: Type;
-  values: Observable<Value>;
   person_person: Person_Person;
 }
