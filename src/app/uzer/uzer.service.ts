@@ -6,12 +6,14 @@ import {BASE_URL_UZERS} from '../app.tokens';
 import {Inject} from '@angular/compiler/src/core';
 import {Headers} from '@angular/http';
 import {UzerLoginService} from "./uzer-login.service";
+import {AppService} from "../app.service";
 
 @Injectable()
 export class UzerService {
-  private uzersUrl = 'http://localhost:8080/uzers';
+  private uzersUrl = this.appSevice.getBaseURL()+"/uzers";
+  private baseUrl = this.appSevice.getBaseURL();
 
-  constructor(private http: HttpClient, private uzerLoginService: UzerLoginService) { }
+  constructor(private http: HttpClient, private uzerLoginService: UzerLoginService, private appSevice: AppService) { }
 
   getUzers():  Promise<Uzer[]> {
     return this.http.get(this.uzersUrl,{headers: new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader())})
@@ -20,7 +22,7 @@ export class UzerService {
   }
 
   createUzer(uzerData: Uzer): Promise<Uzer> {
-    return this.http.post(this.uzersUrl, uzerData,{headers: new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader())})
+    return this.http.post(this.baseUrl+'/saveUzerWithRole?username='+uzerData.username+'&password='+uzerData.password, uzerData)
       .toPromise()
       .catch(this.handleError);
   }
@@ -42,3 +44,7 @@ export class UzerService {
     return Promise.reject(error.message || error);
   }
 }
+
+
+
+

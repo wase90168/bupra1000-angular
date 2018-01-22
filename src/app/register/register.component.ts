@@ -3,6 +3,7 @@ import {Uzer} from '../uzer/uzer';
 import {RegisterService} from './register.service';
 import {Router} from '@angular/router';
 import {UzerLoginService} from '../uzer/uzer-login.service';
+import {UzerService} from "../uzer/uzer.service";
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,7 @@ export class RegisterComponent {
 
 
 
-  constructor(private registerService: RegisterService, private router: Router,private uzerLoginService: UzerLoginService){
+  constructor(private uzerService: UzerService, private router: Router,private uzerLoginService: UzerLoginService){
 
   }
 
@@ -35,8 +36,8 @@ export class RegisterComponent {
 
 
     this
-      .registerService
-      .createUzer(this.username, this.password)
+      .uzerService
+      .createUzer(this.uzer)
       .then(uzer => {
           this.router.navigateByUrl("/login");
           this.message = "Account was created successfully!";
