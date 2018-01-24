@@ -1,0 +1,74 @@
+<h1>Breastfeeding Edit!</h1>
+<div>
+  {{ message }}
+</div>
+
+
+<div class="content" *ngIf="breastfeeding.id != null">
+  <form #form="ngForm">
+
+
+    <div class="form-group">
+      <label>Value</label>
+      <input [(ngModel)]="breastfeeding.description" name="breastfeeding.description" class="form-control" required >
+    </div>
+
+
+    <div class="form-group">
+      <label>Person</label>
+      <select class="form-control" [(ngModel)]="breastfeeding.breastfeeding" [ngModelOptions]="{standalone: true}">
+
+        <option [ngValue]="breastfeeding.breastfeeding" >{{breastfeeding.breastfeeding}}</option>
+        <option [ngValue]="true" >true</option>
+        <option [ngValue]="false" >false</option>
+      </select>
+    </div>
+
+
+
+    <div class="form-group">
+      <button (click)="updateBreastfeeding(breastfeeding)" class="btn btn-warning">Save</button>
+      <button (click)="cancel()" class="btn btn-success">Cancel</button>
+
+    </div>
+  </form>
+
+</div>
+
+
+<div class="content" *ngIf="breastfeeding.id == null">
+  <form #form="ngForm">
+
+
+    <div class="form-group">
+      <label>Value</label>
+      <input [(ngModel)]="breastfeeding.description" name="breastfeeding.description" class="form-control" required >
+    </div>
+
+
+    <div class="form-group">
+      <label>Person</label>
+      <select class="form-control" [(ngModel)]="breastfeeding.breastfeeding" [ngModelOptions]="{standalone: true}">
+        <option [ngValue]=true>True</option>
+        <option [ngValue]=false selected>False</option>
+      </select>
+    </div>
+
+
+
+    <div class="form-group">
+      <button (click)="createBreastfeeding(breastfeeding)" class="btn btn-warning">Save</button>
+      <button (click)="cancel()" class="btn btn-success">Cancel</button>
+
+    </div>
+  </form>
+
+</div>
+
+
+
+
+
+
+
+

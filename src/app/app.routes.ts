@@ -23,6 +23,8 @@ import {ValueEditResolverService} from './value/value-edit/value-edit/value-edit
 import {PersonPersonEditComponent} from "./person-person/person-person-edit/person-person-edit.component";
 import {PersonPersonEditResolverService} from "./person-person/person-person-edit/person-person-edit-resolver.service";
 import {PersonPersonResolverService} from "./person-person/person-person-resolver.service";
+import {BreastfeedingEditComponent} from "./breastfeeding/breastfeeding-edit/breastfeeding-edit.component";
+import {BreastfeedingEditResolverService} from "./breastfeeding/breastfeeding-edit/breastfeeding-edit-resolver.service";
 
 export const APP_ROUTES: Routes = [
   /*{
@@ -135,6 +137,15 @@ export const APP_ROUTES: Routes = [
     path: 'breastfeeding',
     component: BreastfeedingComponent,
     canActivate: [RouterGuard]
+
+  },
+  {
+    path: 'breastfeeding-edit/:id',
+    component: BreastfeedingEditComponent,
+    canActivate: [RouterGuard],
+    resolve: {
+      breastfeeding: BreastfeedingEditResolverService
+    }
 
   },
 

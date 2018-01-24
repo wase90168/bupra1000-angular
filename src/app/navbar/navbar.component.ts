@@ -1,7 +1,5 @@
-import { Component, OnInit, Renderer, ViewChild, ElementRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import {LoginComponent} from '../login/login.component';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {UzerLoginService} from '../uzer/uzer-login.service';
 
 @Component({

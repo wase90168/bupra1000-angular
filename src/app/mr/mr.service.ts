@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import {BASE_URL} from "../app.tokens";
 import {Observable} from "rxjs/Observable";
 import {UzerLoginService} from "../uzer/uzer-login.service";
 import {MR} from "../mr/mr";
