@@ -7,14 +7,14 @@
 
   <div class="form-group">
     <label>Baby</label>
-    <select  class="form-control" [(ngModel)]="person_person.baby">
+    <select  class="form-control" [(ngModel)]="person_person.baby" disabled>
       <option [ngValue]="person_person.baby" selected>{{person_person.baby.prefix}} {{person_person.baby.suffix}}</option>
       <option  *ngFor="let c of babies" [ngValue]="c">{{c.prefix}} {{c.suffix}}</option>
     </select>
   </div>
   <div class="form-group">
     <label>Mother</label>
-    <select  class="form-control" [(ngModel)]="person_person.mother">
+    <select  class="form-control" [(ngModel)]="person_person.mother" disabled>
       <option [ngValue]="person_person.mother" selected>{{person_person.mother.prefix}} {{person_person.mother.suffix}}</option>
       <option  *ngFor="let c of mothers" [ngValue]="c">{{c.prefix}} {{c.suffix}}</option>
     </select>

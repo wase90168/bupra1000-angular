@@ -14,7 +14,7 @@ import {Breastfeeding} from "./breastfeeding";
 export class BreastfeedingComponent implements OnInit {
 
 
-  public data: Observable<Value>;
+  public data: Observable<Breastfeeding>;
   public message: string;
 
   constructor(private route: ActivatedRoute, private router: Router,  private breastfeedingService: BreastfeedingService) { }

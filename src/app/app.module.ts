@@ -47,6 +47,10 @@ import {Person_PersonService} from "./person-person/person-person.service";
 import {PersonPersonResolverService} from "./person-person/person-person-resolver.service";
 import {BreastfeedingEditComponent} from './breastfeeding/breastfeeding-edit/breastfeeding-edit.component';
 import {BreastfeedingEditResolverService} from "./breastfeeding/breastfeeding-edit/breastfeeding-edit-resolver.service";
+import { CategoryEditComponent } from './category/category-edit/category-edit.component';
+import {CategoryEditResolverService} from "./category/category-edit/category-edit-resolver.service";
+import { DimensionEditComponent } from './dimension/dimension-edit/dimension-edit.component';
+import {DimensionEditResolverService} from "./dimension/dimension-edit/dimension-edit-resolver.service";
 
 
 @NgModule({
@@ -83,6 +87,8 @@ import {BreastfeedingEditResolverService} from "./breastfeeding/breastfeeding-ed
     ValueEditComponent,
     PersonPersonEditComponent,
     BreastfeedingEditComponent,
+    CategoryEditComponent,
+    DimensionEditComponent,
 
   ],
   providers: [
@@ -104,6 +110,9 @@ import {BreastfeedingEditResolverService} from "./breastfeeding/breastfeeding-ed
     PersonPersonEditResolverService,
     PersonPersonResolverService,
     BreastfeedingEditResolverService,
+    CategoryEditResolverService,
+    DimensionEditResolverService,
+
 
 
     RouterGuard

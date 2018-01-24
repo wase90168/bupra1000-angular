@@ -15,7 +15,7 @@ export class CategoryService {
 
 
   public findAll(): Observable<Category> {
-    let url = this.categoryUrl;
+    let url = this.categoryUrl+"?size=999";
 
     let headers = new HttpHeaders();
     headers.set('Accept', 'application/json');
@@ -31,15 +31,13 @@ export class CategoryService {
 
   public findById(id:string): Observable<Category> {
     let url = this.categoryUrl + "/" + id +"?projection=inlineCategory";
-    let params = new HttpParams();
-    let headers = new HttpHeaders();
-    headers.set('Accept', 'application/json');
-    headers.set('Authorization', this.uzerLoginService.authorizationHeader());
+    let headers = new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader());
+
 
 
     return this
       .http
-      .get(url, {headers: new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader())})
+      .get(url, {headers})
       .map((data: Category) => {return data});
 
 

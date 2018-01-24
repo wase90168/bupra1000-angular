@@ -41,7 +41,6 @@ export class PersonPersonComponent implements OnInit {
   }
 
   editPerson_Person(id: string) {
-    this.data = null;
     this.router.navigateByUrl("person-person-edit/" + id);
   }
 

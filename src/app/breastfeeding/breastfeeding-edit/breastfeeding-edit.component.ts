@@ -27,6 +27,7 @@ export class BreastfeedingEditComponent implements OnInit {
       }
     );
 
+
   }
 
   updateBreastfeeding(breastfeeding: Breastfeeding) {
@@ -35,6 +36,7 @@ export class BreastfeedingEditComponent implements OnInit {
   }
 
   createBreastfeeding(breastfeeding: Breastfeeding) {
+
     this.breastfeedingService.createBreastfeeding(breastfeeding).then(exec => this.router.navigateByUrl('breastfeeding'));
 
   }

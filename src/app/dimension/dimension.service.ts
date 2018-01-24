@@ -13,8 +13,10 @@ export class DimensionService {
 
   private dimensionUrl: string = this.appService.getBaseURL() + "/dimensions";
 
+  private  baseUrl: string = this.appService.getBaseURL();
+
   public findAll(): Observable<Dimension> {
-    let url = this.dimensionUrl;
+    let url = this.dimensionUrl+"?projection=inlineDimension&size=99999";
 
     let headers = new HttpHeaders();
     headers.set('Accept', 'application/json');
@@ -30,26 +32,23 @@ export class DimensionService {
 
   public findById(id:string): Observable<Dimension> {
     let url = this.dimensionUrl + "/" + id +"?projection=inlineDimension";
-    let params = new HttpParams();
-    let headers = new HttpHeaders();
-    headers.set('Accept', 'application/json');
-    headers.set('Authorization', this.uzerLoginService.authorizationHeader());
+    let headers = new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader());
 
 
     return this
       .http
-      .get(url, {headers: new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader())})
+      .get(url, {headers})
       .map((data: Dimension) => {return data});
 
 
   }
 
-  public updateDimension(dimensionData: Dimension): Promise<any> {
-    let url = this.dimensionUrl + "/" + dimensionData.id;
-    let headers = new HttpHeaders();
-    headers.set('Accept', 'application/json');
-    headers.set('Authorization', this.uzerLoginService.authorizationHeader());
-    return this.http.put(url, dimensionData,{headers: new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader())}).toPromise();
+  public updateDimension(dimension: Dimension): Promise<any> {
+    let url = this.baseUrl + "/updateDimension";
+    let headers = new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader());
+    let params = new HttpParams().set('name',dimension.name).set('dimension',dimension.dimension).set('description',dimension.description).set('category',dimension.category.id).set('id',dimension.id);
+
+    return this.http.put(url, dimension,{headers:headers, params:params}).toPromise();
 
   }
 
@@ -63,13 +62,13 @@ export class DimensionService {
 
   }
 
-  createDimension(dimension: Dimension): Promise<any> {
+  public createDimension(dimension: Dimension): Promise<any> {
+    let url = this.baseUrl + "/createDimension"
+    let headers = new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader());
+    let params = new HttpParams().set('name',dimension.name).set('dimension',dimension.dimension).set('description',dimension.description).set('category',dimension.category.id);
 
-    let headers = new HttpHeaders();
-    headers.set('Accept', 'application/json');
-    headers.set('Authorization', this.uzerLoginService.authorizationHeader());
 
-    return this.http.post(this.dimensionUrl, dimension, {headers: new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader())})
+    return this.http.post(url, dimension, {headers:headers, params:params})
       .toPromise()
 
   }

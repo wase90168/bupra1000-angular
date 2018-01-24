@@ -25,6 +25,10 @@ import {PersonPersonEditResolverService} from "./person-person/person-person-edi
 import {PersonPersonResolverService} from "./person-person/person-person-resolver.service";
 import {BreastfeedingEditComponent} from "./breastfeeding/breastfeeding-edit/breastfeeding-edit.component";
 import {BreastfeedingEditResolverService} from "./breastfeeding/breastfeeding-edit/breastfeeding-edit-resolver.service";
+import {CategoryEditComponent} from "./category/category-edit/category-edit.component";
+import {CategoryEditResolverService} from "./category/category-edit/category-edit-resolver.service";
+import {DimensionEditResolverService} from "./dimension/dimension-edit/dimension-edit-resolver.service";
+import {DimensionEditComponent} from "./dimension/dimension-edit/dimension-edit.component";
 
 export const APP_ROUTES: Routes = [
   /*{
@@ -145,6 +149,24 @@ export const APP_ROUTES: Routes = [
     canActivate: [RouterGuard],
     resolve: {
       breastfeeding: BreastfeedingEditResolverService
+    }
+
+  },
+  {
+    path: 'category-edit/:id',
+    component: CategoryEditComponent,
+    canActivate: [RouterGuard],
+    resolve: {
+      category: CategoryEditResolverService
+    }
+
+  },
+  {
+    path: 'dimension-edit/:id',
+    component: DimensionEditComponent,
+    canActivate: [RouterGuard],
+    resolve: {
+      dimension: DimensionEditResolverService
     }
 
   },

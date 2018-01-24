@@ -7,6 +7,8 @@ import {BreastfeedingService} from "../breastfeeding.service";
 @Injectable()
 export class BreastfeedingEditResolverService implements Resolve<any> {
 
+  breastfeeding: Breastfeeding;
+
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Breastfeeding | Observable<Breastfeeding> | Promise<Breastfeeding> {
 
@@ -14,7 +16,10 @@ export class BreastfeedingEditResolverService implements Resolve<any> {
       return this.breastfeedingService.findById(route.params.id);
     }
     else {
-      return new Breastfeeding();
+      this.breastfeeding = new Breastfeeding();
+      this.breastfeeding.breastfeeding = false;
+      return this.breastfeeding;
+
     }
 
   }

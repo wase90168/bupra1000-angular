@@ -1,0 +1,55 @@
+<h1>Category Edit!</h1>
+<div>
+  {{ message }}
+</div>
+
+
+<div class="content" *ngIf="category.id != null">
+  <form #form="ngForm">
+
+
+    <div class="form-group">
+      <label>Category name</label>
+      <input [(ngModel)]="category.name" name="category.name" class="form-control" required >
+    </div>
+
+
+
+    <div class="form-group">
+      <button (click)="updateCategory(category)" class="btn btn-warning">Save</button>
+      <button (click)="cancel()" class="btn btn-success">Cancel</button>
+
+    </div>
+  </form>
+
+</div>
+
+
+<div class="content" *ngIf="category.id == null">
+  <form #form="ngForm">
+
+
+    <div class="form-group">
+      <label>Category </label>
+      <input [(ngModel)]="category.name" name="category.name" class="form-control" required >
+    </div>
+
+    <div class="form-group">
+      <button (click)="createCategory(category)" class="btn btn-warning">Save</button>
+      <button (click)="cancel()" class="btn btn-success">Cancel</button>
+
+    </div>
+  </form>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
