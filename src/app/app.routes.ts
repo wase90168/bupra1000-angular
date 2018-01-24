@@ -35,10 +35,7 @@ export const APP_ROUTES: Routes = [
     component: HomeComponent,
     canActivate: [RouterGuard]
   },
- /* {
-    path: '**',
-    redirectTo: 'home'
-  },*/
+
   {
     path: 'login',
     component: LoginComponent

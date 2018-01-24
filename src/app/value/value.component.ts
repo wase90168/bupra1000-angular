@@ -3,17 +3,20 @@ import {Value} from './value';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {ValueService} from './value.service';
-import {ProviderOverride} from '@angular/core/src/view';
+import {Cell, PdfmakeService, Row, Table} from "ng-pdf-make";
+
 
 @Component({
   selector: 'app-value',
   templateUrl: './value.component.html',
-  styleUrls: ['./value.component.css']
+  styleUrls: ['./value.component.css'],
+
 })
 export class ValueComponent implements OnInit {
 
   public data: Observable<Value>;
   public message: string;
+
 
 
   constructor(private route: ActivatedRoute, private router: Router,  private valueService: ValueService) {
@@ -25,6 +28,10 @@ export class ValueComponent implements OnInit {
     this.getData();
 
     console.log(this.getData());
+
+    //this.pdfMaker();
+
+
   }
 
 
@@ -59,6 +66,7 @@ export class ValueComponent implements OnInit {
   editValue(id: string){
     this.router.navigateByUrl("value-edit/" + id);
   }
+
 
 
 

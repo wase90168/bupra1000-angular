@@ -61,23 +61,11 @@ export class ValueService  {
       "state=" + value.state.id+ "&" +
       "mr=" + value.mr.id;
 
-
-      console.log(url);
-
     let headers = new HttpHeaders();
     headers.set('Accept', 'application/json');
     headers.set('Authorization', this.uzerLoginService.authorizationHeader());
-    let params = new HttpParams();
-    params.append('value',value.id);
-    params.append('person',value.person.id);
-    params.append('dimension',value.dimension.id);
-    params.append('source',value.source.id);
-    params.append('state',value.state.id);
-    params.append('mr',value.mr.id);
 
-    //this.http.put(urlPerson, valueData.person, {headers, params});
     return this.http.put(url,value,{headers: new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader())}).toPromise().then(hallo => this.updateValueValue(value));
-    //.then(data => this.http.put(urlPerson, valueData.person).toPromise());
   }
 
 
@@ -112,18 +100,9 @@ export class ValueService  {
 
     console.log(url);
 
-    let headers = new HttpHeaders();
-    headers.set('Accept', 'application/json');
-    headers.set('Authorization', this.uzerLoginService.authorizationHeader());
-    let params = new HttpParams();
-    params.append('value',value.value);
-    params.append('person',value.person.id);
-    params.append('dimension',value.dimension.id);
-    params.append('source',value.source.id);
-    params.append('state',value.state.id);
-    params.append('mr',value.mr.id);
+    let headers = new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader()).set('Accept', 'application/json');
 
-    return this.http.post(url,value,{headers: new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader())}).toPromise();
+    return this.http.post(url,value,{headers}).toPromise();
   }
 
 

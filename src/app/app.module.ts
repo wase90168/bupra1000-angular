@@ -48,6 +48,7 @@ import {PersonPersonEditResolverService} from "./person-person/person-person-edi
 import {Person_PersonService} from "./person-person/person-person.service";
 import {PersonPersonResolverService} from "./person-person/person-person-resolver.service";
 import {OAuthService, UrlHelperService} from "angular-oauth2-oidc";
+import {PdfmakeModule, PdfmakeService} from "ng-pdf-make";
 
 
 @NgModule({
@@ -105,10 +106,6 @@ import {OAuthService, UrlHelperService} from "angular-oauth2-oidc";
     PersonPersonResolverService,
     OAuthService,
     UrlHelperService,
-
-
-
-
 
 
     {provide:BASE_URL, useValue: "http://localhost:8080"},

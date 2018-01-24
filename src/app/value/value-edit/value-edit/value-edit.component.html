@@ -3,6 +3,7 @@
   {{ message }}
 </div>
 
+
 <div class="content" *ngIf="value.id != null">
   <form #form="ngForm">
 
@@ -41,7 +42,6 @@
       </select>
     </div>
 
-
     <div class="form-group">
       <label>Dimension</label>
       <select class="form-control" [(ngModel)]="value.dimension" [ngModelOptions]="{standalone: true}">
@@ -61,8 +61,8 @@
 
 
     <div class="form-group">
-      <button (click)="updateValue(value)" class="btn btn-default">Save</button>
-      <button (click)="cancel()" class="btn btn-default">Cancel</button>
+      <button (click)="updateValue(value)" class="btn btn-warning">Save</button>
+      <button (click)="cancel()" class="btn btn-success">Cancel</button>
 
     </div>
   </form>
@@ -75,12 +75,18 @@
 
     <div class="form-group">
       <label>Value</label>
-      <input [(ngModel)]="value.value" class="form-control" required>
+      <input [(ngModel)]="value.value" class="form-control" name="value.value" required pattern="[0-9\.]*">
+    </div>
+
+
+    <div class="text-danger"
+         *ngIf="form?.controls['value.value']?.hasError('pattern')">
+      Example: "12345.456" or "0.234234"
     </div>
 
     <div class="form-group">
       <label>Person</label>
-      <select class="form-control" [(ngModel)]="value.person">
+      <select class="form-control" [(ngModel)]="value.person" [ngModelOptions]="{standalone: true}">
         <option *ngFor="let c of persons" [ngValue]="c">{{c.prefix}} {{c.suffix}}</option>
       </select>
     </div>
@@ -112,8 +118,8 @@
     </div>
 
     <div class="form-group">
-      <button (click)="createValue(value)" class="btn btn-default">Save</button>
-      <button (click)="cancel()" class="btn btn-default">Cancel</button>
+      <button (click)="createValue(value)" class="btn btn-warning">Save</button>
+      <button (click)="cancel()" class="btn btn-success">Cancel</button>
 
     </div>
   </form>
