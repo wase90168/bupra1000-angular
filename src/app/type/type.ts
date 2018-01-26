@@ -5,5 +5,5 @@ import {Observable} from 'rxjs/Observable';
 export class Type {
   id:string;
   character:string;
-  type:Type;
+  type:string;
 }

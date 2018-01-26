@@ -29,6 +29,14 @@ import {CategoryEditComponent} from "./category/category-edit/category-edit.comp
 import {CategoryEditResolverService} from "./category/category-edit/category-edit-resolver.service";
 import {DimensionEditResolverService} from "./dimension/dimension-edit/dimension-edit-resolver.service";
 import {DimensionEditComponent} from "./dimension/dimension-edit/dimension-edit.component";
+import {MrEditComponent} from "./mr/mr-edit/mr-edit.component";
+import {MrEditResolverService} from "./mr/mr-edit/mr-edit-resolver.service";
+import {TypeEditComponent} from "./type/type-edit/type-edit.component";
+import {TypeEditResolverService} from "./type/type-edit/type-edit-resolver.service";
+import {StateEditComponent} from "./state/state-edit/state-edit.component";
+import {StateEditResolverService} from "./state/state-edit/state-edit-resolver.service";
+import {SourceEditComponent} from "./source/source-edit/source-edit.component";
+import {SourceEditResolverService} from "./source/source-edit/source-edit-resolver.service";
 
 export const APP_ROUTES: Routes = [
   /*{
@@ -68,8 +76,6 @@ export const APP_ROUTES: Routes = [
     resolve: {
       value: ValueEditResolverService
     }
-
-
 
   },
 
@@ -167,6 +173,42 @@ export const APP_ROUTES: Routes = [
     canActivate: [RouterGuard],
     resolve: {
       dimension: DimensionEditResolverService
+    }
+
+  },
+  {
+    path: 'mr-edit/:id',
+    component: MrEditComponent,
+    canActivate: [RouterGuard],
+    resolve: {
+      mr: MrEditResolverService
+    }
+
+  },
+  {
+    path: 'type-edit/:id',
+    component: TypeEditComponent,
+    canActivate: [RouterGuard],
+    resolve: {
+      type: TypeEditResolverService
+    }
+
+  },
+  {
+    path: 'state-edit/:id',
+    component: StateEditComponent,
+    canActivate: [RouterGuard],
+    resolve: {
+      state:StateEditResolverService
+    }
+
+  },
+  {
+    path: 'source-edit/:id',
+    component: SourceEditComponent,
+    canActivate: [RouterGuard],
+    resolve: {
+      source:SourceEditResolverService
     }
 
   },

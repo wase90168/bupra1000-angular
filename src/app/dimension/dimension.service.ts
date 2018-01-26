@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {UzerLoginService} from "../uzer/uzer-login.service";
-import {Dimension} from "../dimension/dimension";
 import {AppService} from "../app.service";
+import {Dimension} from "./dimension";
 
 @Injectable()
 export class DimensionService {
@@ -45,10 +45,20 @@ export class DimensionService {
 
   public updateDimension(dimension: Dimension): Promise<any> {
     let url = this.baseUrl + "/updateDimension";
+    let dimensionUrl2 = this.dimensionUrl +"/"+ dimension.id;
     let headers = new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader());
     let params = new HttpParams().set('name',dimension.name).set('dimension',dimension.dimension).set('description',dimension.description).set('category',dimension.category.id).set('id',dimension.id);
 
-    return this.http.put(url, dimension,{headers:headers, params:params}).toPromise();
+    return this.http.put(url, dimension,{headers:headers, params:params}).toPromise().then(exec => this.updateDimensionDimension(dimension));
+
+  }
+
+  updateDimensionDimension(dimension: Dimension): Promise<any> {
+    let url = this.dimensionUrl +"/"+ dimension.id +"?projection=inlineDimension";
+    let headers = new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader());
+
+    console.log(dimension);
+    return this.http.put(url,dimension,{headers}).toPromise();
 
   }
 
@@ -63,7 +73,7 @@ export class DimensionService {
   }
 
   public createDimension(dimension: Dimension): Promise<any> {
-    let url = this.baseUrl + "/createDimension"
+    let url = this.baseUrl + "/createDimension";
     let headers = new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader());
     let params = new HttpParams().set('name',dimension.name).set('dimension',dimension.dimension).set('description',dimension.description).set('category',dimension.category.id);
 

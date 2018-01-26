@@ -30,7 +30,7 @@ export class TypeService {
   }
 
   public findById(id:string): Observable<Type> {
-    let url = this.typeUrl + "/" + id +"?projection=inlineType";
+    let url = this.typeUrl + "/" + id;
     let params = new HttpParams();
     let headers = new HttpHeaders();
     headers.set('Accept', 'application/json');

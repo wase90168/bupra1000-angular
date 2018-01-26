@@ -51,6 +51,13 @@ import { CategoryEditComponent } from './category/category-edit/category-edit.co
 import {CategoryEditResolverService} from "./category/category-edit/category-edit-resolver.service";
 import { DimensionEditComponent } from './dimension/dimension-edit/dimension-edit.component';
 import {DimensionEditResolverService} from "./dimension/dimension-edit/dimension-edit-resolver.service";
+import { MrEditComponent } from './mr/mr-edit/mr-edit.component';
+import {MrEditResolverService} from "./mr/mr-edit/mr-edit-resolver.service";
+import { TypeEditComponent } from './type/type-edit/type-edit.component';
+import {TypeEditResolverService} from "./type/type-edit/type-edit-resolver.service";
+import { StateEditComponent } from './state/state-edit/state-edit.component';
+import {StateEditResolverService} from "./state/state-edit/state-edit-resolver.service";
+import { SourceEditComponent } from './source/source-edit/source-edit.component';
 
 
 @NgModule({
@@ -89,6 +96,10 @@ import {DimensionEditResolverService} from "./dimension/dimension-edit/dimension
     BreastfeedingEditComponent,
     CategoryEditComponent,
     DimensionEditComponent,
+    MrEditComponent,
+    TypeEditComponent,
+    StateEditComponent,
+    SourceEditComponent,
 
   ],
   providers: [
@@ -112,6 +123,9 @@ import {DimensionEditResolverService} from "./dimension/dimension-edit/dimension
     BreastfeedingEditResolverService,
     CategoryEditResolverService,
     DimensionEditResolverService,
+    MrEditResolverService,
+    TypeEditResolverService,
+    StateEditResolverService,
 
 
 

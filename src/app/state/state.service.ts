@@ -30,7 +30,7 @@ export class StateService {
   }
 
   public findById(id:string): Observable<State> {
-    let url = this.stateUrl + "/" + id +"?projection=inlineState";
+    let url = this.stateUrl + "/" + id;
     let params = new HttpParams();
     let headers = new HttpHeaders();
     headers.set('Accept', 'application/json');

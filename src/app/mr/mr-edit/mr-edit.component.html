@@ -1,0 +1,60 @@
+<h1>MR Edit!</h1>
+<div>
+  {{ message }}
+</div>
+
+
+<div class="content" *ngIf="mr.id != null">
+  <form #form="ngForm">
+
+
+    <div class="form-group">
+      <label>Name</label>
+      <input [(ngModel)]="mr.name" name="mr.name" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <input [(ngModel)]="mr.description" name="mr.description" class="form-control">
+    </div>
+
+
+    <div class="form-group">
+      <button (click)="updateMr(mr)" class="btn btn-warning">Save</button>
+      <button (click)="cancel()" class="btn btn-success">Cancel</button>
+
+    </div>
+  </form>
+
+</div>
+
+
+<div class="content" *ngIf="mr.id == null">
+  <form #form="ngForm">
+
+    <div class="form-group">
+      <label>Name</label>
+      <input [(ngModel)]="mr.name" name="mr.name" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <input [(ngModel)]="mr.description" name="mr.description" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <button (click)="createMr(mr)" class="btn btn-warning">Save</button>
+      <button (click)="cancel()" class="btn btn-success">Cancel</button>
+
+    </div>
+  </form>
+
+</div>
+
+
+
+
+
+
+
+

@@ -1,3 +1,53 @@
-<p>
-  type works!
-</p>
+<div>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <td><b>Delete</b></td>
+      <td><b>ID</b></td>
+      <td><b>Character</b></td>
+      <td><b>Type</b></td>
+      <td><b>Edit</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let c of data" class="active"
+        [ngStyle]="{ 'background-color': (c == selectedValue) ? 'lightblue' : ''  }">
+      <td>
+        <form role="form" (submit)="deleteEntry(c.id)">
+          <div class="form-group">
+            <button type="submit" value="Delete" class="btn-xs btn-danger"><span
+              class="glyphicon glyphicon-trash"></span></button>
+          </div>
+        </form>
+      </td>
+      <td>{{c.id}} </td>
+      <td>{{c.character}} </td>
+      <td>{{c.type}} </td>
+      <td>
+        <form role="form" (submit)="editType(c.id)">
+          <div class="form-group">
+            <button type="submit" value="Edit" class="btn-xs btn-warning"><span
+              class="glyphicon glyphicon-pencil"></span>
+            </button>
+          </div>
+        </form>
+      </td>
+
+
+
+
+    </tr>
+    </tbody>
+  </table>
+  <table class="table table-responsive">
+    <td>
+      <button class="btn" (click)="addType()"><span class="glyphicon glyphicon-plus"></span></button>
+    </td>
+  </table>
+</div>
+
+<div *ngIf="message" class="col-md-2 values-actions">
+  <h4>{{message}}</h4>
+
+  <!--<button class="btn"class="btn btn-danger" (click)="deleteEntry(selectedValue)" >Delete</button>-->
+</div>

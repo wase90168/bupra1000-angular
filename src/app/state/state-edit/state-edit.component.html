@@ -1,0 +1,40 @@
+<h1>State Edit!</h1>
+<div>
+  {{ message }}
+</div>
+
+
+<div class="content" >
+  <form #form="ngForm">
+
+
+    <div class="form-group">
+      <label>Text</label>
+      <input [(ngModel)]="state.text" name="state.text" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <input [(ngModel)]="state.description" name="state.description" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Breastfeeding (boolean)</label>
+      <select class="form-control" [(ngModel)]="state.null_allowed" [ngModelOptions]="{standalone: true}">
+
+        <option [ngValue]="state.null_allowed" selected *ngIf="state.id != null">{{state.null_allowed}}</option>
+        <option [ngValue]="true" >true</option>
+        <option [ngValue]="false" >false</option>
+      </select>
+    </div>
+
+
+    <div class="form-group">
+      <button (click)="createState(state)" class="btn btn-warning"  *ngIf="state.id == null">Save</button>
+      <button (click)="updateState(state)" class="btn btn-warning"  *ngIf="state.id != null">Save</button>
+      <button (click)="cancel()" class="btn btn-success">Cancel</button>
+
+    </div>
+  </form>
+
+</div>

@@ -30,7 +30,7 @@ export class MrService {
   }
 
   public findById(id:string): Observable<MR> {
-    let url = this.mrUrl + "/" + id +"?projection=inlineMr";
+    let url = this.mrUrl + "/" + id;
     let params = new HttpParams();
     let headers = new HttpHeaders();
     headers.set('Accept', 'application/json');
@@ -47,10 +47,9 @@ export class MrService {
 
   public updateMr(mrData: MR): Promise<any> {
     let url = this.mrUrl + "/" + mrData.id;
-    let headers = new HttpHeaders();
-    headers.set('Accept', 'application/json');
-    headers.set('Authorization', this.uzerLoginService.authorizationHeader());
-    return this.http.put(url, mrData).toPromise();
+    let headers = new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader());
+
+    return this.http.put(url, mrData,{headers}).toPromise();
 
   }
 
@@ -64,7 +63,7 @@ export class MrService {
 
   }
 
-  createMr(mr: MR): Promise<any> {
+  public createMr(mr: MR): Promise<any> {
 
     let headers = new HttpHeaders();
     headers.set('Accept', 'application/json');
