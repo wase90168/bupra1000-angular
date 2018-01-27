@@ -13,9 +13,10 @@ export class PersonService {
 
 
   private personUrl: string = this.appService.getBaseURL() + "/persons";
+  private baseUrl: string = this.appService.getBaseURL();
 
   public findAll(): Observable<Person> {
-    let url = this.personUrl+"?size=2000";
+    let url = this.personUrl+"?size=2000&projection=inlinePerson";
 
     let headers = new HttpHeaders();
     headers.set('Accept', 'application/json');
@@ -76,7 +77,7 @@ export class PersonService {
   }
 
   public updatePerson(personData: Person): Promise<any> {
-    let url = this.personUrl + "/" + personData.id;
+    let url = this.baseUrl+ "/updatePerson?type="+ personData.type.id;
     let headers = new HttpHeaders();
     headers.set('Accept', 'application/json');
     headers.set('Authorization', this.uzerLoginService.authorizationHeader());
@@ -104,15 +105,19 @@ export class PersonService {
   }
 
   createPerson(person: Person): Promise<any> {
-
+    let url = this.baseUrl+"/createPerson?type="+person.type.id;
     let headers = new HttpHeaders();
     headers.set('Accept', 'application/json');
     headers.set('Authorization', this.uzerLoginService.authorizationHeader());
 
-    return this.http.post(this.personUrl, person, {headers: new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader())})
+    return this.http.post(url, person, {headers: new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader())})
       .toPromise()
 
   }
+
+
+
+
 
 
 

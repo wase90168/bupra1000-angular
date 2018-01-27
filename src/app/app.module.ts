@@ -58,6 +58,9 @@ import {TypeEditResolverService} from "./type/type-edit/type-edit-resolver.servi
 import { StateEditComponent } from './state/state-edit/state-edit.component';
 import {StateEditResolverService} from "./state/state-edit/state-edit-resolver.service";
 import { SourceEditComponent } from './source/source-edit/source-edit.component';
+import {SourceEditResolverService} from "./source/source-edit/source-edit-resolver.service";
+import { PersonEditComponent } from './person/person-edit/person-edit.component';
+import {PersonEditResolverService} from "./person/person-edit/person-edit-resolver.service";
 
 
 @NgModule({
@@ -100,6 +103,7 @@ import { SourceEditComponent } from './source/source-edit/source-edit.component'
     TypeEditComponent,
     StateEditComponent,
     SourceEditComponent,
+    PersonEditComponent,
 
   ],
   providers: [
@@ -126,6 +130,8 @@ import { SourceEditComponent } from './source/source-edit/source-edit.component'
     MrEditResolverService,
     TypeEditResolverService,
     StateEditResolverService,
+    SourceEditResolverService,
+    PersonEditResolverService,
 
 
 

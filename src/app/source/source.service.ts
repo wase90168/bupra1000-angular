@@ -30,7 +30,7 @@ export class SourceService {
   }
 
   public findById(id:string): Observable<Source> {
-    let url = this.sourceUrl + "/" + id +"?projection=inlineSource";
+    let url = this.sourceUrl + "/" + id;
     let params = new HttpParams();
     let headers = new HttpHeaders();
     headers.set('Accept', 'application/json');

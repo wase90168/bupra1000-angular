@@ -37,6 +37,8 @@ import {StateEditComponent} from "./state/state-edit/state-edit.component";
 import {StateEditResolverService} from "./state/state-edit/state-edit-resolver.service";
 import {SourceEditComponent} from "./source/source-edit/source-edit.component";
 import {SourceEditResolverService} from "./source/source-edit/source-edit-resolver.service";
+import {PersonEditComponent} from "./person/person-edit/person-edit.component";
+import {PersonEditResolverService} from "./person/person-edit/person-edit-resolver.service";
 
 export const APP_ROUTES: Routes = [
   /*{
@@ -209,6 +211,15 @@ export const APP_ROUTES: Routes = [
     canActivate: [RouterGuard],
     resolve: {
       source:SourceEditResolverService
+    }
+
+  },
+  {
+    path: 'person-edit/:id',
+    component: PersonEditComponent,
+    canActivate: [RouterGuard],
+    resolve: {
+      person:PersonEditResolverService
     }
 
   },
