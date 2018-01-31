@@ -1,0 +1,89 @@
+<h1>Biomarker Edit!</h1>
+<div>
+  {{ message }}
+</div>
+
+
+<div class="content" *ngIf="biomarker.id != null">
+  <form #form="ngForm">
+
+
+    <div class="form-group">
+      <label>Name</label>
+      <input [(ngModel)]="biomarker.name" name="biomarker.name" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label>Biomarker</label>
+      <input [(ngModel)]="biomarker.biomarker" name="biomarker.biomarker" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <input [(ngModel)]="biomarker.description" name="biomarker.description" class="form-control">
+    </div>
+
+
+    <div class="form-group">
+      <label>Category</label>
+      <select class="form-control" [(ngModel)]="biomarker.category" [ngModelOptions]="{standalone: true}">
+        <option [ngValue]="biomarker.category" selected>{{biomarker.category.categoryName}}</option>
+        <option *ngFor="let c of categories" [ngValue]="c">{{c.categoryName}}</option>
+      </select>
+    </div>
+
+
+    <div class="form-group">
+      <button (click)="updateBiomarker(biomarker)" class="btn btn-warning">Save</button>
+      <button (click)="cancel()" class="btn btn-success">Cancel</button>
+
+    </div>
+  </form>
+
+</div>
+
+
+<div class="content" *ngIf="biomarker.id == null">
+  <form #form="ngForm">
+
+
+    <div class="form-group">
+      <label>Name</label>
+      <input [(ngModel)]="biomarker.name" name="biomarker.name" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label>Biomarker</label>
+      <input [(ngModel)]="biomarker.biomarker" name="biomarker.biomarker" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <input [(ngModel)]="biomarker.description" name="biomarker.description" class="form-control" required>
+    </div>
+
+
+    <div class="form-group">
+      <label>Category</label>
+      <select class="form-control" [(ngModel)]="biomarker.category" [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let c of categories" [ngValue]="c">{{c.categoryName}}</option>
+      </select>
+    </div>
+
+
+    <div class="form-group">
+      <button (click)="createBiomarker(biomarker)" class="btn btn-warning">Save</button>
+      <button (click)="cancel()" class="btn btn-success">Cancel</button>
+
+    </div>
+  </form>
+
+</div>
+
+
+
+
+
+
+
+
