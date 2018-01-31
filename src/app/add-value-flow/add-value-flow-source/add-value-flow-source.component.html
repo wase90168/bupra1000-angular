@@ -1,0 +1,38 @@
+<div class="content">
+
+  <div>
+    <img src="../../../assets/flow/FlowSource.png" alt="Flow Source">
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+  <div class="content">
+    <form #form="ngForm">
+
+
+      <div class="form-group">
+        <label>Source</label>
+        <select class="form-control" [(ngModel)]="source" [ngModelOptions]="{standalone: true}"
+                (change)="saveSource()">
+          <option *ngIf="source != null" [ngValue]="source" selected>{{source.name}}</option>
+
+          <option *ngFor="let c of sources" [ngValue]="c">{{c.name}}</option>
+        </select>
+      </div>
+
+
+
+      <div class="form-group">
+        <button (click)="cancel()" class="btn btn-warning">Cancel</button>
+        <button (click)="back()" class="btn btn-warning">Back</button>
+        <button (click)="continue()" class="btn btn-success" style="position: absolute; right: 2%;">Continue</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

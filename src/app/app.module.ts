@@ -61,6 +61,7 @@ import { SourceEditComponent } from './source/source-edit/source-edit.component'
 import {SourceEditResolverService} from "./source/source-edit/source-edit-resolver.service";
 import { PersonEditComponent } from './person/person-edit/person-edit.component';
 import {PersonEditResolverService} from "./person/person-edit/person-edit-resolver.service";
+import {AddValueFlowModule} from "./add-value-flow/add-value-flow.module";
 
 
 @NgModule({
@@ -69,11 +70,12 @@ import {PersonEditResolverService} from "./person/person-edit/person-edit-resolv
     FormsModule,
     HttpClientModule,
     CommonModule,
+    AddValueFlowModule,
 
 
     HttpModule,
 
-    RouterModule.forRoot(APP_ROUTES)
+    RouterModule.forRoot(APP_ROUTES, { useHash: true, enableTracing: true})
   ],
   declarations: [
     AppComponent,

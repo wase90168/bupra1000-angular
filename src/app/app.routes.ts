@@ -41,11 +41,11 @@ import {PersonEditComponent} from "./person/person-edit/person-edit.component";
 import {PersonEditResolverService} from "./person/person-edit/person-edit-resolver.service";
 
 export const APP_ROUTES: Routes = [
-  /*{
+  {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full'
-  },*/
+  },
   {
     path: 'home',
     component: HomeComponent,
@@ -227,6 +227,3 @@ export const APP_ROUTES: Routes = [
 
 ];
 
-
-export const AppRouterModule
-  = RouterModule.forRoot(APP_ROUTES);

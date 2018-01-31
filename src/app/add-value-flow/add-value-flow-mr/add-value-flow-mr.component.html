@@ -1,0 +1,41 @@
+<div class="content">
+
+  <div>
+    <img src="../../../assets/flow/FlowMR.png" alt="Flow MR">
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+  <div class="content">
+    <form #form="ngForm">
+
+
+
+      <div class="form-group">
+        <label>MR</label>
+        <select class="form-control" [(ngModel)]="mr" [ngModelOptions]="{standalone: true}">
+          <option *ngIf="mr != null" [ngValue]="mr" selected>{{mr.name}}</option>
+
+          <option *ngFor="let c of mrs" [ngValue]="c">{{c.name}}</option>
+        </select>
+      </div>
+
+
+
+
+
+
+      <div class="form-group">
+        <button (click)="cancel()" class="btn btn-warning">Cancel</button>
+        <button (click)="back()" class="btn btn-warning">Back</button>
+        <button (click)="continue()" class="btn btn-success" style="position: absolute; right: 2%;">Continue</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

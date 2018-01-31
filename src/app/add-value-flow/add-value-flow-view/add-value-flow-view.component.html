@@ -1,0 +1,56 @@
+<div class="content">
+
+  <div>
+    <img src="../../../assets/flow/FlowFinish.png" alt="Flow Source">
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+  <div class="content">
+    <form #form="ngForm">
+
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <td><b>Value</b></td>
+          <td><b>Person</b></td>
+          <td><b>MR</b></td>
+          <td><b>Source</b></td>
+          <td><b>Dimension</b></td>
+          <td><b>State</b></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+
+          <td>{{value}} </td>
+          <!--<td>{{c.state}}</td>-->
+          <td>{{prefix}} {{suffix}}</td>
+          <td>{{mr.name}} </td>
+          <td>{{source.name}} </td>
+          <td>{{dimension.name}} </td>
+          <td>{{state.description}} </td>
+
+
+        </tr>
+        </tbody>
+      </table>
+
+
+
+
+
+      <div class="form-group">
+        <button (click)="cancel()" class="btn btn-warning">Cancel</button>
+        <button (click)="back()" class="btn btn-warning">Back</button>
+        <button (click)="save()" class="btn btn-success" style="position: absolute; right: 2%;">Save</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

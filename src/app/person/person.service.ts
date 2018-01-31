@@ -115,6 +115,14 @@ export class PersonService {
 
   }
 
+  createSuffix(): Promise<any>{
+    let url = this.baseUrl+"/createSuffix"
+    let headers = new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader())
+
+    return this.http.post(url, {headers}).toPromise();
+
+  }
+
 
 
 

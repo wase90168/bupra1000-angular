@@ -4,6 +4,10 @@ import {UzerLoginService} from '../uzer/uzer-login.service';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {AppService} from '../app.service';
+import {MR} from "../mr/mr";
+import {Dimension} from "../dimension/dimension";
+import {State} from "../state/state";
+import {Source} from "../source/source";
 
 
 @Injectable()
@@ -18,7 +22,7 @@ export class ValueService  {
   private baseUrl: string = this.appService.getBaseURL();
 
   public findAll(): Observable<Value> {
-    let url = this.valuesUrl+"?size=99999999";
+    let url = this.valuesUrl+"/search/findAllByOrderByIdDesc?size=99999999";
 
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
@@ -96,6 +100,24 @@ export class ValueService  {
       "source=" + value.source.id+ "&" +
       "state=" + value.state.id+ "&" +
       "mr=" + value.mr.id;
+
+
+    console.log(url);
+
+    let headers = new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader()).set('Accept', 'application/json');
+
+    return this.http.post(url,value,{headers}).toPromise();
+  }
+
+  public createValueFlow(value: string, suffix: string, prefix: string, mr: MR, dimension: Dimension, source: Source, state: State): Promise<any> {
+    let url = this.baseUrl + '/createValueFlow' + "?" +
+      "value=" + value + "&" +
+      "prefix=" + prefix + "&" +
+      "suffix=" + suffix + "&" +
+      "dimension=" + dimension.id+ "&" +
+      "source=" + source.id+ "&" +
+      "state=" + state.id+ "&" +
+      "mr=" + mr.id;
 
 
     console.log(url);

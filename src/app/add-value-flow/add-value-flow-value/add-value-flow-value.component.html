@@ -1,0 +1,49 @@
+<div class="content">
+
+  <div>
+    <img src="../../../assets/flow/FlowValue.png" alt="Flow Source">
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+  <div class="content">
+    <form #form="ngForm">
+
+
+      <div class="form-group">
+        <label>Value</label>
+        <input [(ngModel)]="value" name="value" class="form-control" required pattern="[0-9\.]*">
+      </div>
+
+      <div class="text-danger"
+           *ngIf="form?.controls['value']?.hasError('pattern')">
+        Example: "12345.456" or "0.234234"
+      </div>
+
+
+      <div class="form-group">
+        <label>State</label>
+        <select class="form-control" [(ngModel)]="state" [ngModelOptions]="{standalone: true}"
+                (change)="saveState()">
+          <option *ngIf="state != null" [ngValue]="state" selected>{{state.description}}</option>
+
+          <option *ngFor="let c of states" [ngValue]="c">{{c.description}}</option>
+        </select>
+      </div>
+
+
+
+      <div class="form-group">
+        <button (click)="cancel()" class="btn btn-warning">Cancel</button>
+        <button (click)="back()" class="btn btn-warning">Back</button>
+        <button (click)="continue()" class="btn btn-success" style="position: absolute; right: 2%;">Continue</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

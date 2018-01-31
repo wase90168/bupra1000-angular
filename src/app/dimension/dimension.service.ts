@@ -4,6 +4,7 @@ import {Observable} from "rxjs/Observable";
 import {UzerLoginService} from "../uzer/uzer-login.service";
 import {AppService} from "../app.service";
 import {Dimension} from "./dimension";
+import {Category} from "../category/category";
 
 @Injectable()
 export class DimensionService {
@@ -80,6 +81,19 @@ export class DimensionService {
 
     return this.http.post(url, dimension, {headers:headers, params:params})
       .toPromise()
+
+  }
+
+  public findAllByCategory(category: Category): Observable<Dimension> {
+    let url = this.dimensionUrl + "/search/findAllByCategory_Id?projection=inlineDimension&category_id="+category.id;
+    let headers = new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader());
+    //let params = new HttpParams().set("category_id","1");
+
+    return this
+      .http
+      .get(url,{headers})
+      .map((data: Dimension) => {return data["_embedded"]});
+
 
   }
 
