@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Category} from "../../category/category";
-import {Dimension} from "../../dimension/dimension";
+import {Biomarker} from "../../biomarker/biomarker";
 import {Source} from "../../source/source";
 import {MR} from "../../mr/mr";
 import {State} from "../../state/state";
@@ -22,7 +22,7 @@ export class AddValueFlowViewComponent implements OnInit {
   mr: MR;
 
   category: Category;
-  dimension: Dimension;
+  biomarker: Biomarker;
 
   source: Source;
 
@@ -40,7 +40,7 @@ export class AddValueFlowViewComponent implements OnInit {
     this.suffix = this.addValueFlowService._suffix;
     this.mr = this.addValueFlowService._mr;
     this.category = this.addValueFlowService._category;
-    this.dimension = this.addValueFlowService._dimension;
+    this.biomarker = this.addValueFlowService._biomarker;
     this.source = this.addValueFlowService._source;
     this.value = this.addValueFlowService._value;
     this.state = this.addValueFlowService._state;
@@ -59,11 +59,11 @@ export class AddValueFlowViewComponent implements OnInit {
   save() {
     this.value1 = new Value();
     this.value1.value = this.addValueFlowService._value;
-    this.value1.dimension = this.addValueFlowService._dimension;
+    this.value1.biomarker = this.addValueFlowService._biomarker;
     this.value1.mr = this.addValueFlowService._mr;
     this.value1.state = this.addValueFlowService._state;
     this.value1.source = this.addValueFlowService._source;
-    //this.valueService.createValueFlow(this.value, this.suffix, this.prefix, this.mr, this.dimension, this.source, this.state).then(exec => this.router.navigateByUrl('value'));
+    //this.valueService.createValueFlow(this.value, this.suffix, this.prefix, this.mr, this.biomarker, this.source, this.state).then(exec => this.router.navigateByUrl('value'));
     this.valueService.createValueFlow2(this.value1, this.suffix, this.prefix).then(exec => this.router.navigateByUrl('value'));
     this.addValueFlowService.clearAll();
 

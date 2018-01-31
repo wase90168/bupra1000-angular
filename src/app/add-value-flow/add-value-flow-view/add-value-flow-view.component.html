@@ -19,20 +19,30 @@
           <td><b>Person</b></td>
           <td><b>MR</b></td>
           <td><b>Source</b></td>
-          <td><b>Dimension</b></td>
+          <td><b>Biomarker</b></td>
           <td><b>State</b></td>
         </tr>
         </thead>
         <tbody>
         <tr>
 
-          <td>{{value}} </td>
-          <!--<td>{{c.state}}</td>-->
-          <td>{{prefix}} {{suffix}} </td>
-          <td>{{mr.name}} </td>
-          <td>{{source.name}} </td>
-          <td>{{dimension.name}} </td>
-          <td>{{state.description}} </td>
+          <td *ngIf="value != null">{{value}} </td>
+          <td *ngIf="value == null">{{null}} </td>
+
+          <td *ngIf="prefix != null">{{prefix}} {{suffix}} </td>
+          <td *ngIf="prefix == null">{{null}} </td>
+
+          <td *ngIf="mr != null">{{c.mr.name}} </td>
+          <td *ngIf="mr == null">{{null}} </td>
+
+          <td *ngIf="source != null">{{source.name}} </td>
+          <td *ngIf="source == null">{{null}} </td>
+
+          <td *ngIf="biomarker != null">{{biomarker.name}} </td>
+          <td *ngIf="biomarker == null">{{null}} </td>
+
+          <td *ngIf="state != null">{{state.description}} </td>
+          <td *ngIf="state == null">{{null}} </td>
 
 
         </tr>

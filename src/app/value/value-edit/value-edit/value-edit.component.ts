@@ -8,11 +8,11 @@ import {PersonService} from "../../../person/person.service";
 import {State} from "../../../state/state";
 import {MR} from "../../../mr/mr";
 import {Source} from "../../../source/source";
-import {Dimension} from "../../../dimension/dimension";
+import {Biomarker} from "../../../biomarker/biomarker";
 import {StateService} from "../../../state/state.service";
 import {MrService} from "../../../mr/mr.service";
 import {SourceService} from "../../../source/source.service";
-import {DimensionService} from "../../../dimension/dimension.service";
+import {BiomarkerService} from "../../../biomarker/biomarker.service";
 
 @Component({
   selector: 'app-value-edit',
@@ -34,13 +34,13 @@ export class ValueEditComponent implements OnInit {
 
   sources: Observable<Source>;
 
-  dimensions: Observable<Dimension>;
+  biomarkers: Observable<Biomarker>;
 
 
 
   constructor(private valueService: ValueService, private route: ActivatedRoute, private router: Router, private personService: PersonService,
               private stateService: StateService, private mrService: MrService, private sourceService: SourceService,
-              private dimensionService: DimensionService ) {
+              private biomarkerService: BiomarkerService ) {
 
 
   }
@@ -56,7 +56,7 @@ export class ValueEditComponent implements OnInit {
     this.getSources();
     this.getMrs();
     this.getStates();
-    this.getDimensions();
+    this.getBiomarkers();
 
 
 
@@ -83,7 +83,7 @@ export class ValueEditComponent implements OnInit {
 
   }
 
-  createValue(value: Value){
+  createValue(value: Value) {
     this.valueService.createValue(value).then(exec => this.router.navigateByUrl('value'));
 
 
@@ -113,12 +113,12 @@ export class ValueEditComponent implements OnInit {
 
   }
 
-  getDimensions(){
-    this.dimensionService.findAll().subscribe((dimensions) => this.dimensions = dimensions['dimensions']);
+  getBiomarkers() {
+    this.biomarkerService.findAll().subscribe((biomarkers) => this.biomarkers = biomarkers['biomarkers']);
 
   }
 
-  cancel(){
+  cancel() {
     this.router.navigateByUrl('value');
   }
 

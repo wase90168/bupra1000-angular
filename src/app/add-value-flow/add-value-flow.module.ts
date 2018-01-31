@@ -7,7 +7,7 @@ import {ADD_VALUE_FLOW_ROUTES} from "./add-value-flow.routes";
 import {AddValueFlowService} from "./add-value-flow.service";
 import {AddValueFlowPersonComponent} from './add-value-flow-person/add-value-flow-person.component';
 import { AddValueFlowMrComponent } from './add-value-flow-mr/add-value-flow-mr.component';
-import { AddValueFlowDimensionComponent } from './add-value-flow-dimension/add-value-flow-dimension.component';
+import { AddValueFlowBiomarkerComponent } from './add-value-flow-biomarker/add-value-flow-biomarker.component';
 import { AddValueFlowSourceComponent } from './add-value-flow-source/add-value-flow-source.component';
 import { AddValueFlowValueComponent } from './add-value-flow-value/add-value-flow-value.component';
 import { AddValueFlowViewComponent } from './add-value-flow-view/add-value-flow-view.component';
@@ -25,7 +25,7 @@ import { AddValueFlowViewComponent } from './add-value-flow-view/add-value-flow-
   declarations: [AddValueFlowComponent,
     AddValueFlowPersonComponent,
     AddValueFlowMrComponent,
-    AddValueFlowDimensionComponent,
+    AddValueFlowBiomarkerComponent,
     AddValueFlowSourceComponent,
     AddValueFlowValueComponent,
     AddValueFlowViewComponent],

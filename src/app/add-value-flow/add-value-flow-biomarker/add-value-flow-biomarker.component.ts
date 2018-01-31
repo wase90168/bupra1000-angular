@@ -2,44 +2,44 @@ import {Component, OnInit} from '@angular/core';
 import {AddValueFlowService} from "../add-value-flow.service";
 import {Observable} from "rxjs/Observable";
 import {Router} from "@angular/router";
-import {DimensionService} from "../../dimension/dimension.service";
+import {BiomarkerService} from "../../biomarker/biomarker.service";
 import {CategoryService} from "../../category/category.service";
 import {Category} from "../../category/category";
-import {Dimension} from "../../dimension/dimension";
+import {Biomarker} from "../../biomarker/biomarker";
 
 @Component({
-  selector: 'app-add-value-flow-dimension',
-  templateUrl: './add-value-flow-dimension.component.html',
-  styleUrls: ['./add-value-flow-dimension.component.css']
+  selector: 'app-add-value-flow-biomarker',
+  templateUrl: './add-value-flow-biomarker.component.html',
+  styleUrls: ['./add-value-flow-biomarker.component.css']
 })
-export class AddValueFlowDimensionComponent implements OnInit {
+export class AddValueFlowBiomarkerComponent implements OnInit {
 
-  private dimension: Dimension;
+  private biomarker: Biomarker;
   private category: Category;
 
 
   private categories: Observable<Category>;
-  private dimensions: Observable<Dimension>;
+  private biomarkers: Observable<Biomarker>;
 
-  constructor(private dimensionService: DimensionService, private categoryService: CategoryService, private addValueFlowService: AddValueFlowService, private router: Router) {
+  constructor(private biomarkerService: BiomarkerService, private categoryService: CategoryService, private addValueFlowService: AddValueFlowService, private router: Router) {
   }
 
   ngOnInit() {
     this.getCategories()
 
-    this.dimension = this.addValueFlowService._dimension;
+    this.biomarker = this.addValueFlowService._biomarker;
     this.category = this.addValueFlowService._category;
 
     if (this.category != null) {
-      this.getDimensions();
+      this.getBiomarkers();
     }
 
   }
 
 
-  getDimensions() {
+  getBiomarkers() {
 
-    this.dimensionService.findAllByCategory(this.category).subscribe((dimensions) => this.dimensions = dimensions['dimensions']);
+    this.biomarkerService.findAllByCategory(this.category).subscribe((biomarkers) => this.biomarkers = biomarkers['biomarkers']);
 
   }
 
@@ -50,7 +50,7 @@ export class AddValueFlowDimensionComponent implements OnInit {
 
 
   continue() {
-    this.addValueFlowService._dimension = this.dimension;
+    this.addValueFlowService._biomarker = this.biomarker;
     this.addValueFlowService._category = this.category;
     this.router.navigateByUrl("/add-value-flow/source");
 
@@ -74,8 +74,8 @@ export class AddValueFlowDimensionComponent implements OnInit {
 
   }
 
-  saveDimension(){
-    this.addValueFlowService._dimension = this.dimension;
+  saveBiomarker(){
+    this.addValueFlowService._biomarker = this.biomarker;
 
 
   }

@@ -41,7 +41,7 @@ export class AddValueFlowSourceComponent implements OnInit {
 
 
   back(){
-    this.router.navigateByUrl('add-value-flow/dimension')
+    this.router.navigateByUrl('add-value-flow/biomarker')
   }
 
   cancel(){

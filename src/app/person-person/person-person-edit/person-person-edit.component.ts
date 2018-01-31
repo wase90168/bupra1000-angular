@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {PersonService} from "../../person/person.service";
-import {Dimension} from "../../dimension/dimension";
+import {Biomarker} from "../../biomarker/biomarker";
 import {ValueService} from "../../value/value.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Observable} from "rxjs/Observable";
 import {SourceService} from "../../source/source.service";
-import {DimensionService} from "../../dimension/dimension.service";
+import {BiomarkerService} from "../../biomarker/biomarker.service";
 import {Person} from "../../person/person";
 import {State} from "../../state/state";
 import {Value} from "../../value/value";

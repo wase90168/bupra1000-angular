@@ -11,7 +11,7 @@
       <td><b>Person</b></td>
       <td><b>MR</b></td>
       <td><b>Source</b></td>
-      <td><b>Dimension</b></td>
+      <td><b>Biomarker</b></td>
       <td><b>State</b></td>
       <td><b>Edit</b></td>
     </tr>
@@ -38,8 +38,8 @@
       <td *ngIf="c.source != null">{{c.source.name}} </td>
       <td *ngIf="c.source == null">{{null}} </td>
 
-      <td *ngIf="c.dimension != null">{{c.dimension.name}} </td>
-      <td *ngIf="c.dimension == null">{{null}} </td>
+      <td *ngIf="c.biomarker != null">{{c.biomarker.name}} </td>
+      <td *ngIf="c.biomarker == null">{{null}} </td>
 
       <td *ngIf="c.state != null">{{c.state.text}} </td>
       <td *ngIf="c.state == null">{{null}} </td>

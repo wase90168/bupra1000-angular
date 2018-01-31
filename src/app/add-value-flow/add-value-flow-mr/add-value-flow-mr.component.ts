@@ -37,7 +37,7 @@ export class AddValueFlowMrComponent implements OnInit {
 
   continue(){
     this.addValueFlowService._mr = this.mr;
-    this.router.navigateByUrl("/add-value-flow/dimension");
+    this.router.navigateByUrl("/add-value-flow/biomarker");
 
   }
 

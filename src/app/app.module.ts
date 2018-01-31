@@ -18,7 +18,7 @@ import {ValueComponent} from './value/value.component';
 import {PersonComponent} from './person/person.component';
 import {CategoryComponent} from './category/category.component';
 import {BreastfeedingComponent} from './breastfeeding/breastfeeding.component';
-import {DimensionComponent} from './dimension/dimension.component';
+import {BiomarkerComponent} from './biomarker/biomarker.component';
 import {PersonPersonComponent} from './person-person/person-person.component';
 import {HomeComponent} from './home/home.component';
 import {APP_ROUTES} from "./app.routes";
@@ -33,7 +33,7 @@ import {ValueEditComponent} from './value/value-edit/value-edit/value-edit.compo
 import {CommonModule} from '@angular/common';
 import {BreastfeedingService} from "./breastfeeding/breastfeeding.service";
 import {CategoryService} from "./category/category.service";
-import {DimensionService} from "./dimension/dimension.service";
+import {BiomarkerService} from "./biomarker/biomarker.service";
 import {MrService} from "./mr/mr.service";
 import {PersonService} from "./person/person.service";
 import {SourceService} from "./source/source.service";
@@ -49,8 +49,8 @@ import {BreastfeedingEditComponent} from './breastfeeding/breastfeeding-edit/bre
 import {BreastfeedingEditResolverService} from "./breastfeeding/breastfeeding-edit/breastfeeding-edit-resolver.service";
 import { CategoryEditComponent } from './category/category-edit/category-edit.component';
 import {CategoryEditResolverService} from "./category/category-edit/category-edit-resolver.service";
-import { DimensionEditComponent } from './dimension/dimension-edit/dimension-edit.component';
-import {DimensionEditResolverService} from "./dimension/dimension-edit/dimension-edit-resolver.service";
+import { BiomarkerEditComponent } from './biomarker/biomarker-edit/biomarker-edit.component';
+import {BiomarkerEditResolverService} from "./biomarker/biomarker-edit/biomarker-edit-resolver.service";
 import { MrEditComponent } from './mr/mr-edit/mr-edit.component';
 import {MrEditResolverService} from "./mr/mr-edit/mr-edit-resolver.service";
 import { TypeEditComponent } from './type/type-edit/type-edit.component';
@@ -91,7 +91,7 @@ import {AddValueFlowModule} from "./add-value-flow/add-value-flow.module";
     PersonComponent,
     CategoryComponent,
     BreastfeedingComponent,
-    DimensionComponent,
+    BiomarkerComponent,
     PersonPersonComponent,
     HomeComponent,
     LoginComponent,
@@ -100,7 +100,7 @@ import {AddValueFlowModule} from "./add-value-flow/add-value-flow.module";
     PersonPersonEditComponent,
     BreastfeedingEditComponent,
     CategoryEditComponent,
-    DimensionEditComponent,
+    BiomarkerEditComponent,
     MrEditComponent,
     TypeEditComponent,
     StateEditComponent,
@@ -115,7 +115,7 @@ import {AddValueFlowModule} from "./add-value-flow/add-value-flow.module";
     ValueService,
     BreastfeedingService,
     CategoryService,
-    DimensionService,
+    BiomarkerService,
     MrService,
     PersonService,
     Person_PersonService,
@@ -128,7 +128,7 @@ import {AddValueFlowModule} from "./add-value-flow/add-value-flow.module";
     PersonPersonResolverService,
     BreastfeedingEditResolverService,
     CategoryEditResolverService,
-    DimensionEditResolverService,
+    BiomarkerEditResolverService,
     MrEditResolverService,
     TypeEditResolverService,
     StateEditResolverService,

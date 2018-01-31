@@ -2,7 +2,7 @@ import {State} from '../state/state';
 import {Person} from '../person/person';
 import {MR} from '../mr/mr';
 import {Source} from '../source/source';
-import {Dimension} from '../dimension/dimension';
+import {Biomarker} from '../biomarker/biomarker';
 
 export class Value {
   id: string;
@@ -11,5 +11,5 @@ export class Value {
   person: Person;
   mr: MR;
   source: Source;
-  dimension: Dimension;
+  biomarker: Biomarker;
 }

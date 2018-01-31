@@ -14,7 +14,7 @@ import {RoleComponent} from './role/role.component';
 import {PersonComponent} from './person/person.component';
 import {PersonPersonComponent} from './person-person/person-person.component';
 import {MrComponent} from './mr/mr.component';
-import {DimensionComponent} from './dimension/dimension.component';
+import {BiomarkerComponent} from './biomarker/biomarker.component';
 import {CategoryComponent} from './category/category.component';
 import {BreastfeedingComponent} from './breastfeeding/breastfeeding.component';
 import {ValueService} from './value/value.service';
@@ -27,8 +27,8 @@ import {BreastfeedingEditComponent} from "./breastfeeding/breastfeeding-edit/bre
 import {BreastfeedingEditResolverService} from "./breastfeeding/breastfeeding-edit/breastfeeding-edit-resolver.service";
 import {CategoryEditComponent} from "./category/category-edit/category-edit.component";
 import {CategoryEditResolverService} from "./category/category-edit/category-edit-resolver.service";
-import {DimensionEditResolverService} from "./dimension/dimension-edit/dimension-edit-resolver.service";
-import {DimensionEditComponent} from "./dimension/dimension-edit/dimension-edit.component";
+import {BiomarkerEditResolverService} from "./biomarker/biomarker-edit/biomarker-edit-resolver.service";
+import {BiomarkerEditComponent} from "./biomarker/biomarker-edit/biomarker-edit.component";
 import {MrEditComponent} from "./mr/mr-edit/mr-edit.component";
 import {MrEditResolverService} from "./mr/mr-edit/mr-edit-resolver.service";
 import {TypeEditComponent} from "./type/type-edit/type-edit.component";
@@ -134,8 +134,8 @@ export const APP_ROUTES: Routes = [
 
   },
   {
-    path: 'dimension',
-    component: DimensionComponent,
+    path: 'biomarker',
+    component: BiomarkerComponent,
     canActivate: [RouterGuard]
 
   },
@@ -170,11 +170,11 @@ export const APP_ROUTES: Routes = [
 
   },
   {
-    path: 'dimension-edit/:id',
-    component: DimensionEditComponent,
+    path: 'biomarker-edit/:id',
+    component: BiomarkerEditComponent,
     canActivate: [RouterGuard],
     resolve: {
-      dimension: DimensionEditResolverService
+      biomarker: BiomarkerEditResolverService
     }
 
   },
