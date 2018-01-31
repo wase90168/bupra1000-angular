@@ -29,11 +29,21 @@
       <td>{{c.id}} </td>
       <td>{{c.value}} </td>
       <!--<td>{{c.state}}</td>-->
-      <td>{{c.person.prefix}} {{c.person.suffix}}</td>
-      <td>{{c.mr.name}} </td>
-      <td>{{c.source.name}} </td>
-      <td>{{c.dimension.name}} </td>
-      <td>{{c.state.text}} </td>
+      <td *ngIf="c.person != null">{{c.person.prefix}} {{c.person.suffix}}</td>
+      <td *ngIf="c.person == null">{{null}}</td>
+
+      <td *ngIf="c.mr != null">{{c.mr.name}} </td>
+      <td *ngIf="c.mr == null">{{null}} </td>
+
+      <td *ngIf="c.source != null">{{c.source.name}} </td>
+      <td *ngIf="c.source == null">{{null}} </td>
+
+      <td *ngIf="c.dimension != null">{{c.dimension.name}} </td>
+      <td *ngIf="c.dimension == null">{{null}} </td>
+
+      <td *ngIf="c.state != null">{{c.state.text}} </td>
+      <td *ngIf="c.state == null">{{null}} </td>
+
       <td>
         <!--  <button class="btn" (click)="select(c)"><span class="glyphicon glyphicon-cog"></span></button>-->
         <form role="form" (submit)="editValue(c.id)">

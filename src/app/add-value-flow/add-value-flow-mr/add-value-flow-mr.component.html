@@ -18,7 +18,7 @@
         <label>MR</label>
         <select class="form-control" [(ngModel)]="mr" [ngModelOptions]="{standalone: true}">
           <option *ngIf="mr != null" [ngValue]="mr" selected>{{mr.name}}</option>
-
+          <option *ngIf="mr == null" [ngValue]="null" selected></option>
           <option *ngFor="let c of mrs" [ngValue]="c">{{c.name}}</option>
         </select>
       </div>

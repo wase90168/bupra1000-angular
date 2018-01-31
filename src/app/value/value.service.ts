@@ -127,6 +127,19 @@ export class ValueService  {
     return this.http.post(url,value,{headers}).toPromise();
   }
 
+  public createValueFlow2(value: Value, suffix: string, prefix: string): Promise<any> {
+    let url = this.baseUrl + '/createValueFlow2' + "?" +
+      "prefix=" + prefix + "&" +
+      "suffix=" + suffix;
+
+
+    console.log(url);
+
+    let headers = new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader()).set('Accept', 'application/json');
+
+    return this.http.post(url,value,{headers}).toPromise();
+  }
+
 
 
 }

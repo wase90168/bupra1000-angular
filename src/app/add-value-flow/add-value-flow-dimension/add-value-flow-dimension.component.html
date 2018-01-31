@@ -19,6 +19,7 @@
                 (change)="saveCategory()">
           <option *ngIf="category != null" [ngValue]="category" selected>{{category.categoryName}}</option>
 
+
           <option *ngFor="let c of categories" [ngValue]="c">{{c.categoryName}}</option>
         </select>
       </div>
@@ -29,6 +30,8 @@
         <select class="form-control" [(ngModel)]="dimension" [ngModelOptions]="{standalone: true}"
                 (mouseover)="ngOnInit()" (change)="saveDimension()">
           <option *ngIf="dimension != null" [ngValue]="dimension" selected>{{dimension.name}}</option>
+          <option *ngIf="dimension == null" [ngValue]="''" selected></option>
+
 
           <option *ngFor="let c of dimensions" [ngValue]="c">{{c.name}}</option>
         </select>
