@@ -19,6 +19,15 @@
     </div>
 
     <div class="form-group">
+      <label>Dimension</label>
+      <select class="form-control" [(ngModel)]="value.dimension" [ngModelOptions]="{standalone: true}">
+        <option [ngValue]="value.dimension" selected *ngIf="value.dimension != null">{{value.dimension.dimension}}
+        </option>
+        <option *ngFor="let c of dimensions" [ngValue]="c">{{c.dimension}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
       <label>Person</label>
       <select class="form-control" [(ngModel)]="value.person" [ngModelOptions]="{standalone: true}">
         <option [ngValue]="value.person" selected *ngIf="value.person != null">{{value.person.prefix}} {{value.person.suffix}}</option>
@@ -59,6 +68,11 @@
       </select>
     </div>
 
+    <div class="form-group">
+      <label>Comment</label>
+      <input [(ngModel)]="value.comment.comment" name="comment.comment" class="form-control" required>
+    </div>
+
 
     <div class="form-group">
       <button (click)="updateValue(value)" class="btn btn-warning">Save</button>
@@ -82,6 +96,13 @@
     <div class="text-danger"
          *ngIf="form?.controls['value.value']?.hasError('pattern')">
       Example: "12345.456" or "0.234234"
+    </div>
+
+    <div class="form-group">
+      <label>Dimension</label>
+      <select class="form-control" [(ngModel)]="value.dimension" [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let c of dimensions" [ngValue]="c">{{c.dimension}}</option>
+      </select>
     </div>
 
     <div class="form-group">
@@ -118,11 +139,20 @@
     </div>
 
     <div class="form-group">
+      <label>Comment</label>
+      <input [(ngModel)]="comment.comment" name="comment.comment" class="form-control" required
+             [ngModelOptions]="{standalone: true}">
+    </div>
+
+    <div class="form-group">
       <button (click)="createValue(value)" class="btn btn-warning">Save</button>
       <button (click)="cancel()" class="btn btn-success">Cancel</button>
 
     </div>
+
+
   </form>
+
 
 </div>
 

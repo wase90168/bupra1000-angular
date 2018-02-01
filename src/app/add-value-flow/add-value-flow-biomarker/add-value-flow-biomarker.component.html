@@ -30,9 +30,7 @@
         <select class="form-control" [(ngModel)]="biomarker" [ngModelOptions]="{standalone: true}"
                 (mouseover)="ngOnInit()" (change)="saveBiomarker()">
           <option *ngIf="biomarker != null" [ngValue]="biomarker" selected>{{biomarker.name}}</option>
-          <option *ngIf="biomarker == null" [ngValue]="''" selected></option>
-
-
+          <option *ngIf="biomarker == null" [ngValue]="null" selected></option>
           <option *ngFor="let c of biomarkers" [ngValue]="c">{{c.name}}</option>
         </select>
       </div>

@@ -7,6 +7,7 @@
       <td><b>Delete</b></td>
       <td><b>ID</b></td>
       <td><b>Value</b></td>
+      <td><b>Dimension</b></td>
       <!--<td><b>State</b></td>-->
       <td><b>Person</b></td>
       <td><b>MR</b></td>
@@ -22,33 +23,39 @@
       <td>
         <form role="form" (submit)="deleteEntry(c.id)">
           <div class="form-group">
-            <button type="submit" value="Delete" class="btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+            <button type="submit" value="Delete" class="btn-xs btn-danger"><span
+              class="glyphicon glyphicon-trash"></span></button>
           </div>
         </form>
       </td>
-      <td>{{c.id}} </td>
-      <td>{{c.value}} </td>
+      <td>{{c.id}}</td>
+      <td>{{c.value}}</td>
+
+      <td *ngIf="c.dimension != null">{{c.dimension.dimension}}</td>
+      <td *ngIf="c.dimension == null">{{null}}</td>
+
       <!--<td>{{c.state}}</td>-->
       <td *ngIf="c.person != null">{{c.person.prefix}} {{c.person.suffix}}</td>
       <td *ngIf="c.person == null">{{null}}</td>
 
-      <td *ngIf="c.mr != null">{{c.mr.name}} </td>
-      <td *ngIf="c.mr == null">{{null}} </td>
+      <td *ngIf="c.mr != null">{{c.mr.name}}</td>
+      <td *ngIf="c.mr == null">{{null}}</td>
 
-      <td *ngIf="c.source != null">{{c.source.name}} </td>
-      <td *ngIf="c.source == null">{{null}} </td>
+      <td *ngIf="c.source != null">{{c.source.name}}</td>
+      <td *ngIf="c.source == null">{{null}}</td>
 
-      <td *ngIf="c.biomarker != null">{{c.biomarker.name}} </td>
-      <td *ngIf="c.biomarker == null">{{null}} </td>
+      <td *ngIf="c.biomarker != null">{{c.biomarker.name}}</td>
+      <td *ngIf="c.biomarker == null">{{null}}</td>
 
-      <td *ngIf="c.state != null">{{c.state.text}} </td>
-      <td *ngIf="c.state == null">{{null}} </td>
+      <td *ngIf="c.state != null">{{c.state.text}}</td>
+      <td *ngIf="c.state == null">{{null}}</td>
 
       <td>
         <!--  <button class="btn" (click)="select(c)"><span class="glyphicon glyphicon-cog"></span></button>-->
         <form role="form" (submit)="editValue(c.id)">
           <div class="form-group">
-            <button type="submit" value="Edit" class="btn-xs btn-warning"><span class="glyphicon glyphicon-pencil"></span>
+            <button type="submit" value="Edit" class="btn-xs btn-warning"><span
+              class="glyphicon glyphicon-pencil"></span>
             </button>
           </div>
         </form>

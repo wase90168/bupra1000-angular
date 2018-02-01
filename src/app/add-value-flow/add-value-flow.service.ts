@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import {MR} from "../mr/mr";
-import {Biomarker} from "../biomarker/biomarker";
-import {Source} from "../source/source";
-import {Value} from "../value/value";
-import {State} from "../state/state";
-import {Category} from "../category/category";
+import {Injectable} from '@angular/core';
+import {MR} from '../mr/mr';
+import {Biomarker} from '../biomarker/biomarker';
+import {Source} from '../source/source';
+import {State} from '../state/state';
+import {Category} from '../category/category';
+import {Dimension} from '../dimension/dimension';
 
 @Injectable()
 export class AddValueFlowService {
@@ -22,6 +22,9 @@ export class AddValueFlowService {
   public _value: string;
   public _state: State;
 
+  public _comment: Comment;
+  public _dimension: Dimension;
+
   constructor() { }
 
 
@@ -34,6 +37,8 @@ export class AddValueFlowService {
     this._value = null;
     this._state = null;
     this._category = null;
+    this._comment = null;
+    this._dimension = null;
   }
 
 

@@ -1,0 +1,62 @@
+<h1>Dimension Edit!</h1>
+<div>
+  {{ message }}
+</div>
+
+
+<div class="content" *ngIf="dimension.id != null">
+  <form #form="ngForm">
+
+
+    <div class="form-group">
+      <label>Dimension</label>
+      <input [(ngModel)]="dimension.dimension" name="dimension.dimension" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <input [(ngModel)]="dimension.description" name="dimension.description" class="form-control">
+    </div>
+
+
+    <div class="form-group">
+      <button (click)="updateDimension(dimension)" class="btn btn-warning">Save</button>
+      <button (click)="cancel()" class="btn btn-success">Cancel</button>
+
+    </div>
+  </form>
+
+</div>
+
+
+<div class="content" *ngIf="dimension.id == null">
+  <form #form="ngForm">
+
+
+    <div class="form-group">
+      <label>Dimension</label>
+      <input [(ngModel)]="dimension.dimension" name="dimension.dimension" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <input [(ngModel)]="dimension.description" name="dimension.description" class="form-control" required>
+    </div>
+
+
+    <div class="form-group">
+      <button (click)="createDimension(dimension)" class="btn btn-warning">Save</button>
+      <button (click)="cancel()" class="btn btn-success">Cancel</button>
+
+    </div>
+  </form>
+
+</div>
+
+
+
+
+
+
+
+

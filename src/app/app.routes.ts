@@ -1,10 +1,8 @@
-import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from "./home/home.component";
+import {Routes} from '@angular/router';
+import {HomeComponent} from './home/home.component';
 import {LoginComponent} from './login/login.component';
 import {RouterGuard} from './route-guard.service';
 import {RegisterComponent} from './register/register.component';
-import {NavbarComponent} from './navbar/navbar.component';
-import {AppComponent} from './app.component';
 import {UzerComponent} from './uzer/uzer.component';
 import {ValueComponent} from './value/value.component';
 import {TypeComponent} from './type/type.component';
@@ -17,28 +15,29 @@ import {MrComponent} from './mr/mr.component';
 import {BiomarkerComponent} from './biomarker/biomarker.component';
 import {CategoryComponent} from './category/category.component';
 import {BreastfeedingComponent} from './breastfeeding/breastfeeding.component';
-import {ValueService} from './value/value.service';
 import {ValueEditComponent} from './value/value-edit/value-edit/value-edit.component';
 import {ValueEditResolverService} from './value/value-edit/value-edit/value-edit-resolver.service';
-import {PersonPersonEditComponent} from "./person-person/person-person-edit/person-person-edit.component";
-import {PersonPersonEditResolverService} from "./person-person/person-person-edit/person-person-edit-resolver.service";
-import {PersonPersonResolverService} from "./person-person/person-person-resolver.service";
-import {BreastfeedingEditComponent} from "./breastfeeding/breastfeeding-edit/breastfeeding-edit.component";
-import {BreastfeedingEditResolverService} from "./breastfeeding/breastfeeding-edit/breastfeeding-edit-resolver.service";
-import {CategoryEditComponent} from "./category/category-edit/category-edit.component";
-import {CategoryEditResolverService} from "./category/category-edit/category-edit-resolver.service";
-import {BiomarkerEditResolverService} from "./biomarker/biomarker-edit/biomarker-edit-resolver.service";
-import {BiomarkerEditComponent} from "./biomarker/biomarker-edit/biomarker-edit.component";
-import {MrEditComponent} from "./mr/mr-edit/mr-edit.component";
-import {MrEditResolverService} from "./mr/mr-edit/mr-edit-resolver.service";
-import {TypeEditComponent} from "./type/type-edit/type-edit.component";
-import {TypeEditResolverService} from "./type/type-edit/type-edit-resolver.service";
-import {StateEditComponent} from "./state/state-edit/state-edit.component";
-import {StateEditResolverService} from "./state/state-edit/state-edit-resolver.service";
-import {SourceEditComponent} from "./source/source-edit/source-edit.component";
-import {SourceEditResolverService} from "./source/source-edit/source-edit-resolver.service";
-import {PersonEditComponent} from "./person/person-edit/person-edit.component";
-import {PersonEditResolverService} from "./person/person-edit/person-edit-resolver.service";
+import {PersonPersonEditComponent} from './person-person/person-person-edit/person-person-edit.component';
+import {PersonPersonEditResolverService} from './person-person/person-person-edit/person-person-edit-resolver.service';
+import {BreastfeedingEditComponent} from './breastfeeding/breastfeeding-edit/breastfeeding-edit.component';
+import {BreastfeedingEditResolverService} from './breastfeeding/breastfeeding-edit/breastfeeding-edit-resolver.service';
+import {CategoryEditComponent} from './category/category-edit/category-edit.component';
+import {CategoryEditResolverService} from './category/category-edit/category-edit-resolver.service';
+import {BiomarkerEditResolverService} from './biomarker/biomarker-edit/biomarker-edit-resolver.service';
+import {BiomarkerEditComponent} from './biomarker/biomarker-edit/biomarker-edit.component';
+import {MrEditComponent} from './mr/mr-edit/mr-edit.component';
+import {MrEditResolverService} from './mr/mr-edit/mr-edit-resolver.service';
+import {TypeEditComponent} from './type/type-edit/type-edit.component';
+import {TypeEditResolverService} from './type/type-edit/type-edit-resolver.service';
+import {StateEditComponent} from './state/state-edit/state-edit.component';
+import {StateEditResolverService} from './state/state-edit/state-edit-resolver.service';
+import {SourceEditComponent} from './source/source-edit/source-edit.component';
+import {SourceEditResolverService} from './source/source-edit/source-edit-resolver.service';
+import {PersonEditComponent} from './person/person-edit/person-edit.component';
+import {PersonEditResolverService} from './person/person-edit/person-edit-resolver.service';
+import {DimensionComponent} from './dimension/dimension.component';
+import {DimensionEditComponent} from './dimension/dimension-edit/dimension-edit.component';
+import {DimensionEditResolverService} from './dimension/dimension-edit/dimension-edit-resolver.service';
 
 export const APP_ROUTES: Routes = [
   {
@@ -49,12 +48,15 @@ export const APP_ROUTES: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [RouterGuard]
   },
 
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'dimension',
+    component: DimensionComponent
   },
   {
     path: 'register',
@@ -220,6 +222,15 @@ export const APP_ROUTES: Routes = [
     canActivate: [RouterGuard],
     resolve: {
       person:PersonEditResolverService
+    }
+
+  },
+  {
+    path: 'dimension-edit/:id',
+    component: DimensionEditComponent,
+    canActivate: [RouterGuard],
+    resolve: {
+      dimension: DimensionEditResolverService
     }
 
   },

@@ -21,6 +21,7 @@
           <td><b>Source</b></td>
           <td><b>Biomarker</b></td>
           <td><b>State</b></td>
+          <td><b>Comment</b></td>
         </tr>
         </thead>
         <tbody>
@@ -43,6 +44,9 @@
 
           <td *ngIf="state != null">{{state.description}} </td>
           <td *ngIf="state == null">{{null}} </td>
+
+          <td *ngIf="comment != null">{{comment.comment}}</td>
+          <td *ngIf="comment == null">{{null}}</td>
 
 
         </tr>

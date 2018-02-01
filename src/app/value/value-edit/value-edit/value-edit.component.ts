@@ -1,18 +1,20 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ValueService} from '../../value.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Value} from '../../value';
 import {Observable} from 'rxjs/Observable';
-import {Person} from "../../../person/person";
-import {PersonService} from "../../../person/person.service";
-import {State} from "../../../state/state";
-import {MR} from "../../../mr/mr";
-import {Source} from "../../../source/source";
-import {Biomarker} from "../../../biomarker/biomarker";
-import {StateService} from "../../../state/state.service";
-import {MrService} from "../../../mr/mr.service";
-import {SourceService} from "../../../source/source.service";
-import {BiomarkerService} from "../../../biomarker/biomarker.service";
+import {Person} from '../../../person/person';
+import {PersonService} from '../../../person/person.service';
+import {State} from '../../../state/state';
+import {MR} from '../../../mr/mr';
+import {Source} from '../../../source/source';
+import {Biomarker} from '../../../biomarker/biomarker';
+import {StateService} from '../../../state/state.service';
+import {MrService} from '../../../mr/mr.service';
+import {SourceService} from '../../../source/source.service';
+import {BiomarkerService} from '../../../biomarker/biomarker.service';
+import {DimensionService} from '../../../dimension/dimension.service';
+import {Dimension} from '../../../dimension/dimension';
 
 @Component({
   selector: 'app-value-edit',
@@ -36,11 +38,17 @@ export class ValueEditComponent implements OnInit {
 
   biomarkers: Observable<Biomarker>;
 
+  dimensions: Observable<Dimension>;
+
+  comment: Comment;
+
+
+
 
 
   constructor(private valueService: ValueService, private route: ActivatedRoute, private router: Router, private personService: PersonService,
               private stateService: StateService, private mrService: MrService, private sourceService: SourceService,
-              private biomarkerService: BiomarkerService ) {
+              private biomarkerService: BiomarkerService, private dimensionService: DimensionService/*, private commentService: CommentService*/) {
 
 
   }
@@ -57,6 +65,8 @@ export class ValueEditComponent implements OnInit {
     this.getMrs();
     this.getStates();
     this.getBiomarkers();
+    this.getDimension();
+    this.comment = new Comment();
 
 
 
@@ -84,6 +94,7 @@ export class ValueEditComponent implements OnInit {
   }
 
   createValue(value: Value) {
+    this.value.comment = this.comment;
     this.valueService.createValue(value).then(exec => this.router.navigateByUrl('value'));
 
 
@@ -115,6 +126,11 @@ export class ValueEditComponent implements OnInit {
 
   getBiomarkers() {
     this.biomarkerService.findAll().subscribe((biomarkers) => this.biomarkers = biomarkers['biomarkers']);
+
+  }
+
+  getDimension() {
+    this.dimensionService.findAll().subscribe((dimensions) => this.dimensions = dimensions['dimensions']);
 
   }
 
