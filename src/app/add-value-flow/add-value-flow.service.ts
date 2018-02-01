@@ -5,6 +5,7 @@ import {Source} from '../source/source';
 import {State} from '../state/state';
 import {Category} from '../category/category';
 import {Dimension} from '../dimension/dimension';
+import {Comment} from '../comment/comment';
 
 @Injectable()
 export class AddValueFlowService {

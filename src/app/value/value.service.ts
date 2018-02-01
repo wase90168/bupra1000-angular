@@ -4,10 +4,10 @@ import {UzerLoginService} from '../uzer/uzer-login.service';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {AppService} from '../app.service';
-import {MR} from "../mr/mr";
-import {Biomarker} from "../biomarker/biomarker";
-import {State} from "../state/state";
-import {Source} from "../source/source";
+import {MR} from '../mr/mr';
+import {Biomarker} from '../biomarker/biomarker';
+import {State} from '../state/state';
+import {Source} from '../source/source';
 
 
 @Injectable()
@@ -69,7 +69,7 @@ export class ValueService  {
     headers.set('Accept', 'application/json');
     headers.set('Authorization', this.uzerLoginService.authorizationHeader());
 
-    return this.http.put(url, value, {headers: new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader())}).toPromise().then(hallo => this.updateValueValue(value));
+    return this.http.put(url, value, {headers: new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader())}).toPromise();
   }
 
 

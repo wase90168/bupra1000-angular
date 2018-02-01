@@ -8,6 +8,7 @@ import {AddValueFlowService} from '../add-value-flow.service';
 import {Router} from '@angular/router';
 import {ValueService} from '../../value/value.service';
 import {Value} from '../../value/value';
+import {Comment} from '../../comment/comment';
 
 @Component({
   selector: 'app-add-value-flow-view',
@@ -54,7 +55,7 @@ export class AddValueFlowViewComponent implements OnInit {
   }
 
   cancel() {
-    this.addValueFlowService.clearAll()
+    this.addValueFlowService.clearAll();
     this.router.navigateByUrl('home');
   }
 

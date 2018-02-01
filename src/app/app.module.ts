@@ -67,6 +67,7 @@ import {CommentComponent} from './comment/comment.component';
 import {DimensionService} from './dimension/dimension.service';
 import {DimensionEditComponent} from './dimension/dimension-edit/dimension-edit.component';
 import {DimensionEditResolverService} from './dimension/dimension-edit/dimension-edit-resolver.service';
+import {CommentService} from './comment/comment.service';
 
 
 @NgModule({
@@ -144,6 +145,7 @@ import {DimensionEditResolverService} from './dimension/dimension-edit/dimension
     PersonEditResolverService,
     DimensionService,
     DimensionEditResolverService,
+    CommentService,
 
 
 

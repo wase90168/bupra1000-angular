@@ -6,6 +6,7 @@ import {State} from '../../state/state';
 import {StateService} from '../../state/state.service';
 import {DimensionService} from '../../dimension/dimension.service';
 import {Dimension} from '../../dimension/dimension';
+import {Comment} from '../../comment/comment';
 
 @Component({
   selector: 'app-add-value-flow-value',

@@ -4,6 +4,7 @@ import {MR} from '../mr/mr';
 import {Source} from '../source/source';
 import {Biomarker} from '../biomarker/biomarker';
 import {Dimension} from '../dimension/dimension';
+import {Comment} from '../comment/comment';
 
 export class Value {
   id: string;

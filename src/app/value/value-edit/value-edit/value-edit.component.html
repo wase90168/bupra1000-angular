@@ -4,7 +4,7 @@
 </div>
 
 
-<div class="content" *ngIf="value.id != null">
+<div class="content">
   <form #form="ngForm">
 
 
@@ -70,91 +70,21 @@
 
     <div class="form-group">
       <label>Comment</label>
-      <input [(ngModel)]="value.comment.comment" name="comment.comment" class="form-control" required>
+      <input *ngIf="value.comment != null" [(ngModel)]="value.comment.comment" name="value.comment.comment"
+             class="form-control" required [ngModelOptions]="{standalone: true}">
+      <input *ngIf="value.comment == null" [(ngModel)]="comment1.comment" name="value.comment.comment"
+             class="form-control" required [ngModelOptions]="{standalone: true}">
     </div>
 
 
     <div class="form-group">
-      <button (click)="updateValue(value)" class="btn btn-warning">Save</button>
+      <button *ngIf="value.id != null" (click)="updateValue(value)" class="btn btn-warning">Save</button>
+      <button *ngIf="value.id == null" (click)="createValue(value)" class="btn btn-warning">Save</button>
       <button (click)="cancel()" class="btn btn-success">Cancel</button>
 
     </div>
   </form>
 
-</div>
-
-
-<div class="content" *ngIf="value.id == null">
-  <form #form="ngForm">
-
-    <div class="form-group">
-      <label>Value</label>
-      <input [(ngModel)]="value.value" class="form-control" name="value.value" required pattern="[0-9\.]*">
-    </div>
-
-
-    <div class="text-danger"
-         *ngIf="form?.controls['value.value']?.hasError('pattern')">
-      Example: "12345.456" or "0.234234"
-    </div>
-
-    <div class="form-group">
-      <label>Dimension</label>
-      <select class="form-control" [(ngModel)]="value.dimension" [ngModelOptions]="{standalone: true}">
-        <option *ngFor="let c of dimensions" [ngValue]="c">{{c.dimension}}</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label>Person</label>
-      <select class="form-control" [(ngModel)]="value.person" [ngModelOptions]="{standalone: true}">
-        <option *ngFor="let c of persons" [ngValue]="c">{{c.prefix}} {{c.suffix}}</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>Source</label>
-      <select class="form-control" [(ngModel)]="value.source" [ngModelOptions]="{standalone: true}">
-        <option *ngFor="let c of sources" [ngValue]="c">{{c.name}}</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>MR</label>
-      <select class="form-control" [(ngModel)]="value.mr" [ngModelOptions]="{standalone: true}">
-        <option *ngFor="let c of mrs" [ngValue]="c">{{c.name}}</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label>Biomarker</label>
-      <select class="form-control" [(ngModel)]="value.biomarker" [ngModelOptions]="{standalone: true}">
-        <option *ngFor="let c of biomarkers" [ngValue]="c">{{c.name}}</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label>State</label>
-      <select class="form-control" [(ngModel)]="value.state" [ngModelOptions]="{standalone: true}">
-        <option *ngFor="let c of states" [ngValue]="c">{{c.text}}</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label>Comment</label>
-      <input [(ngModel)]="comment.comment" name="comment.comment" class="form-control" required
-             [ngModelOptions]="{standalone: true}">
-    </div>
-
-    <div class="form-group">
-      <button (click)="createValue(value)" class="btn btn-warning">Save</button>
-      <button (click)="cancel()" class="btn btn-success">Cancel</button>
-
-    </div>
-
-
-  </form>
-
-
-</div>
 
 
 

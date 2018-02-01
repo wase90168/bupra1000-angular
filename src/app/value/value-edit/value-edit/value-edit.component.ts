@@ -15,6 +15,8 @@ import {SourceService} from '../../../source/source.service';
 import {BiomarkerService} from '../../../biomarker/biomarker.service';
 import {DimensionService} from '../../../dimension/dimension.service';
 import {Dimension} from '../../../dimension/dimension';
+import {CommentService} from '../../../comment/comment.service';
+import {Comment} from '../../../comment/comment';
 
 @Component({
   selector: 'app-value-edit',
@@ -40,7 +42,7 @@ export class ValueEditComponent implements OnInit {
 
   dimensions: Observable<Dimension>;
 
-  comment: Comment;
+  comment1: Comment;
 
 
 
@@ -48,7 +50,7 @@ export class ValueEditComponent implements OnInit {
 
   constructor(private valueService: ValueService, private route: ActivatedRoute, private router: Router, private personService: PersonService,
               private stateService: StateService, private mrService: MrService, private sourceService: SourceService,
-              private biomarkerService: BiomarkerService, private dimensionService: DimensionService/*, private commentService: CommentService*/) {
+              private biomarkerService: BiomarkerService, private dimensionService: DimensionService, private commentService: CommentService/*, private commentService: CommentService*/) {
 
 
   }
@@ -66,7 +68,12 @@ export class ValueEditComponent implements OnInit {
     this.getStates();
     this.getBiomarkers();
     this.getDimension();
-    this.comment = new Comment();
+    if (this.value.comment == null) {
+      this.comment1 = new Comment();
+    }
+    else {
+      this.comment1 = this.value.comment;
+    }
 
 
 
@@ -94,7 +101,7 @@ export class ValueEditComponent implements OnInit {
   }
 
   createValue(value: Value) {
-    this.value.comment = this.comment;
+    this.value.comment = this.comment1;
     this.valueService.createValue(value).then(exec => this.router.navigateByUrl('value'));
 
 
