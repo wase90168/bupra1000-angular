@@ -1,9 +1,8 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Value} from './value';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {ValueService} from './value.service';
-import {Cell, PdfmakeService, Row, Table} from "ng-pdf-make";
 
 
 @Component({

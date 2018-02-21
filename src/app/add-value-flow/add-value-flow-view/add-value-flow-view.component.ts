@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 import {ValueService} from '../../value/value.service';
 import {Value} from '../../value/value';
 import {Comment} from '../../comment/comment';
+import {Dimension} from "../../dimension/dimension";
 
 @Component({
   selector: 'app-add-value-flow-view',
@@ -31,6 +32,8 @@ export class AddValueFlowViewComponent implements OnInit {
   state: State;
   comment: Comment;
 
+  dimension: Dimension;
+
   value1: Value;
 
   constructor(private valueService: ValueService, private addValueFlowService: AddValueFlowService, private router: Router) {
@@ -47,6 +50,7 @@ export class AddValueFlowViewComponent implements OnInit {
     this.value = this.addValueFlowService._value;
     this.state = this.addValueFlowService._state;
     this.comment = this.addValueFlowService._comment;
+    this.dimension = this.addValueFlowService._dimension;
 
   }
 
@@ -67,8 +71,8 @@ export class AddValueFlowViewComponent implements OnInit {
     this.value1.state = this.addValueFlowService._state;
     this.value1.source = this.addValueFlowService._source;
     this.value1.comment = this.addValueFlowService._comment;
-    //this.valueService.createValueFlow(this.value, this.suffix, this.prefix, this.mr, this.biomarker, this.source, this.state).then(exec => this.router.navigateByUrl('value'));
-    this.valueService.createValueFlow2(this.value1, this.suffix, this.prefix).then(exec => this.router.navigateByUrl('value'));
+    this.value1.dimension = this.addValueFlowService._dimension;
+    this.valueService.createValueFlow(this.value1, this.suffix, this.prefix).then(exec => this.router.navigateByUrl('value'));
     this.addValueFlowService.clearAll();
 
   }

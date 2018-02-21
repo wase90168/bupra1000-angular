@@ -75,15 +75,6 @@ export class ValueEditComponent implements OnInit {
       this.comment1 = this.value.comment;
     }
 
-
-
-    //this.load(this.route.snapshot.params['id'])
-
-    //this.data = this.route.snapshot.data;
-
-
-
-
   }
 
   load(id: string): void {

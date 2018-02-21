@@ -81,7 +81,7 @@ import {CommentService} from './comment/comment.service';
 
     HttpModule,
 
-    RouterModule.forRoot(APP_ROUTES, { useHash: true, enableTracing: true})
+    RouterModule.forRoot(APP_ROUTES, { useHash: true, enableTracing: false})
   ],
   declarations: [
     AppComponent,
@@ -121,6 +121,7 @@ import {CommentService} from './comment/comment.service';
     UzerService,
     UzerLoginService,
     NavbarComponent,
+    SidebarComponent,
     ValueService,
     BreastfeedingService,
     CategoryService,

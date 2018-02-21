@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {UzerLoginService} from '../uzer/uzer-login.service';
+import {SidebarComponent} from "../sidebar/sidebar.component";
 
 @Component({
     selector: 'navbar-cmp',
@@ -8,7 +9,7 @@ import {UzerLoginService} from '../uzer/uzer-login.service';
 })
 export class NavbarComponent implements OnInit{
 
-  constructor(private uzerLoginService:UzerLoginService,private router:Router){
+  constructor(private uzerLoginService:UzerLoginService,private router:Router, private sidebar: SidebarComponent){
 
   }
 
@@ -33,7 +34,8 @@ export class NavbarComponent implements OnInit{
   }
 
   logIn() {
-    this.ngOnInit()
+    this.ngOnInit();
+    this.sidebar.ngOnInit();
 
     this.router.navigateByUrl('/login');
   }

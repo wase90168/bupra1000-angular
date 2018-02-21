@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
-import {UzerLoginService} from '../uzer/uzer-login.service';
-import {NavbarComponent} from '../navbar/navbar.component';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +7,7 @@ import {NavbarComponent} from '../navbar/navbar.component';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private uzerLoginService:NavbarComponent){
+  constructor(){
 
   }
 

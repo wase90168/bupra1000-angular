@@ -1,6 +1,4 @@
 <div>
-
-
   <table class="table table-bordered">
     <thead>
     <tr>
@@ -8,7 +6,6 @@
       <td><b>ID</b></td>
       <td><b>Value</b></td>
       <td><b>Dimension</b></td>
-      <!--<td><b>State</b></td>-->
       <td><b>Person</b></td>
       <td><b>MR</b></td>
       <td><b>Source</b></td>
@@ -34,7 +31,6 @@
       <td *ngIf="c.dimension != null">{{c.dimension.dimension}}</td>
       <td *ngIf="c.dimension == null">{{null}}</td>
 
-      <!--<td>{{c.state}}</td>-->
       <td *ngIf="c.person != null">{{c.person.prefix}} {{c.person.suffix}}</td>
       <td *ngIf="c.person == null">{{null}}</td>
 
@@ -51,7 +47,6 @@
       <td *ngIf="c.state == null">{{null}}</td>
 
       <td>
-        <!--  <button class="btn" (click)="select(c)"><span class="glyphicon glyphicon-cog"></span></button>-->
         <form role="form" (submit)="editValue(c.id)">
           <div class="form-group">
             <button type="submit" value="Edit" class="btn-xs btn-warning"><span
@@ -74,7 +69,6 @@
 <div *ngIf="message" class="col-md-2 values-actions">
   <h4>{{message}}</h4>
 
-  <!--<button class="btn"class="btn btn-danger" (click)="deleteEntry(selectedValue)" >Delete</button>-->
 </div>
 
 

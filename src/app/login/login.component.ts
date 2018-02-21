@@ -1,7 +1,7 @@
 import {UzerLoginService} from '../uzer/uzer-login.service';
 import {Router} from '@angular/router';
 import {Component, OnInit} from '@angular/core';
-import {AppService} from "../app.service";
+import {SidebarComponent} from "../sidebar/sidebar.component";
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit{
   public isLoggedIn = false;
 
 
-  constructor(private uzerLoginService:UzerLoginService,private router:Router){
+  constructor(private uzerLoginService:UzerLoginService,private router:Router, private sidebar: SidebarComponent){
 
   }
 
@@ -41,6 +41,9 @@ export class LoginComponent implements OnInit{
         this.message = false;
       }.bind(this), 3000);
     });
+
+    this.sidebar.ngOnInit();
+
   }
 
 
@@ -49,7 +52,7 @@ export class LoginComponent implements OnInit{
 
 
   logOut(){
-    this.uzerLoginService.logOut()
+    this.uzerLoginService.logOut();
     this.router.navigateByUrl('/login')
   }
 

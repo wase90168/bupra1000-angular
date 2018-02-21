@@ -1,5 +1,5 @@
 
-<div class="sidebar-wrapper">
+<div class="sidebar-wrapper" (mousemove)="ngOnInit()">
     <div class="logo">
             <div class="logo-img">
                 <img src="../../assets/img/logo1000.PNG" alt="1000">
@@ -25,63 +25,64 @@
         <p><a routerLink="value">Value</a></p>
       </a>
     </li>
-    <li>
+    <li *ngIf="admin">
       <a>
         <i class="glyphicon glyphicon-heart"></i>
         <p><a routerLink="type">Type</a></p>
       </a>
     </li>
 
-    <li>
+
+    <li *ngIf="admin">
       <a>
         <i class="glyphicon glyphicon-stats"></i>
         <p><a routerLink="state">State</a></p>
       </a>
     </li>
-    <li>
+    <li *ngIf="admin">
       <a>
         <i class="glyphicon glyphicon-option-horizontal"></i>
         <p><a routerLink="source">Source</a></p>
       </a>
     </li>
 
-    <li>
+    <li *ngIf="admin">
       <a>
         <i class="glyphicon glyphicon-glass"></i>
         <p><a routerLink="person">Person</a></p>
       </a>
     </li>
-    <li>
+    <li *ngIf="admin">
       <a>
         <i class=" 	glyphicon glyphicon-pushpin"></i>
         <p><a routerLink="person-person">Baby-Mutter</a></p>
       </a>
     </li>
-    <li>
+    <li *ngIf="admin">
       <a>
         <i class="glyphicon glyphicon-scale"></i>
         <p><a routerLink="mr">MR</a></p>
       </a>
     </li>
-    <li>
+    <li *ngIf="admin">
       <a>
         <i class="glyphicon glyphicon-baby-formula"></i>
         <p><a routerLink="breastfeeding">Breastfeeding</a></p>
       </a>
     </li>
-    <li>
+    <li *ngIf="admin">
       <a>
         <i class="glyphicon glyphicon-equalizer"></i>
         <p><a routerLink="biomarker">Biomarker</a></p>
       </a>
     </li>
-    <li>
+    <li *ngIf="admin">
       <a>
         <i class="glyphicon glyphicon-compressed"></i>
         <p><a routerLink="category">Category</a></p>
       </a>
     </li>
-    <li>
+    <li *ngIf="admin">
       <a>
         <i class="glyphicon glyphicon-euro"></i>
         <p><a routerLink="dimension">Dimension</a></p>
