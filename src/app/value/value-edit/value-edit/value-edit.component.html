@@ -63,8 +63,8 @@
     <div class="form-group">
       <label>State</label>
       <select class="form-control" [(ngModel)]="value.state" [ngModelOptions]="{standalone: true}">
-        <option [ngValue]="value.state" selected *ngIf="value.state != null">{{value.state.text}}</option>
-        <option *ngFor="let c of states" [ngValue]="c">{{c.text}}</option>
+        <option [ngValue]="value.state" selected *ngIf="value.state != null">{{value.state.description}}</option>
+        <option *ngFor="let c of states" [ngValue]="c">{{c.description}}</option>
       </select>
     </div>
 

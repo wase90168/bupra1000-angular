@@ -1,7 +1,7 @@
 import {UzerLoginService} from '../uzer/uzer-login.service';
 import {Router} from '@angular/router';
 import {Component, OnInit} from '@angular/core';
-import {SidebarComponent} from "../sidebar/sidebar.component";
+import {SidebarComponent} from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-login',
@@ -42,7 +42,6 @@ export class LoginComponent implements OnInit{
       }.bind(this), 3000);
     });
 
-    this.sidebar.ngOnInit();
 
   }
 

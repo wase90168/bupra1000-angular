@@ -1,9 +1,9 @@
-import {Injectable} from "@angular/core";
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import {Router} from "@angular/router";
-import {AppService} from "../app.service";
-import {Observable} from "rxjs/Observable";
-import {Uzer} from "./uzer";
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {AppService} from '../app.service';
+import {Observable} from 'rxjs/Observable';
+import {Uzer} from './uzer';
 
 
 @Injectable()
@@ -38,11 +38,9 @@ export class UzerLoginService {
     let findByUsername = "/search/findByUsername";
     return new Promise((resolve, reject) => {
 
-      let headers = new HttpHeaders();
-      headers.append("Authorization", "Basic " + btoa(userName + ":" + password));
+      let headers = new HttpHeaders().set('Authorization', 'Basic ' + btoa(userName + ':' + password));
 
-      let params = new URLSearchParams();
-      params.append('username', userName);
+
 
       this.http.get(this.uzersUrl + findByUsername + "?" + "username=" + userName + "&projection=inlineUzer", {headers: headers}).subscribe(
         (userInfo) => {
