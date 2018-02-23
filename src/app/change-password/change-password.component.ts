@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import {UzerLoginService} from '../uzer/uzer-login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-change-password',
@@ -18,7 +19,7 @@ export class ChangePasswordComponent implements OnInit {
 
   @Output() success: string;
 
-  constructor(private uzerLoginService: UzerLoginService) {
+  constructor(private uzerLoginService: UzerLoginService, private router: Router) {
   }
 
   ngOnInit() {
@@ -32,6 +33,7 @@ export class ChangePasswordComponent implements OnInit {
       this.uzerLoginService.changePassword(this.password, this.passwordOld).catch((err) => this.error = 'Password has not been changed!').then((exec) => {
         if (this.error == null) {
           this.success = 'Password has been changed';
+          this.router.navigateByUrl('home');
         }
       });
 

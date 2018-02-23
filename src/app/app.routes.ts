@@ -61,7 +61,8 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
+    canActivate: [RouterGuard]
   },
   {
     path: 'uzer',

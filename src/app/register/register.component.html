@@ -41,6 +41,19 @@
           <span *ngIf="f?.controls?.password?.hasError('required')" class="help-block">This field is required!</span>
         </div>
 
+        <div class="form-group">
+          <label for="password" class="cols-sm-2 control-label">Confirm Password</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span [ngStyle]="{'background-color': (f?.controls?.password?.valid)? 'green' : ''}"
+                    class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+              <input [(ngModel)]="passwordValid" required type="password" class="form-control" name="password"
+                     id="password" placeholder="Confirm your desired password"/>
+            </div>
+          </div>
+          <span *ngIf="f?.controls?.password?.hasError('required')" class="help-block">This field is required!</span>
+        </div>
+
 
         <div class="form-group ">
           <button [disabled]="!f.valid" type="submit" class="btn btn-primary btn-lg btn-block login-button" (click)="save()" >Register</button>

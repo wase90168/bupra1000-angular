@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import {Uzer} from './uzer';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {UzerLoginService} from "./uzer-login.service";
-import {AppService} from "../app.service";
+import {UzerLoginService} from './uzer-login.service';
+import {AppService} from '../app.service';
 
 @Injectable()
 export class UzerService {
@@ -20,7 +20,8 @@ export class UzerService {
   }
 
   createUzer(uzerData: Uzer): Promise<Uzer> {
-    return this.http.post(this.baseUrl + '/saveUzerWithRole?username=' + uzerData.username + '&password=' + uzerData.password, uzerData)
+    return this.http.post(this.baseUrl + '/saveUzerWithRole?username=' + uzerData.username + '&password=' + uzerData.password, uzerData,
+      {headers: new HttpHeaders().set('Authorization', this.uzerLoginService.authorizationHeader())})
       .toPromise()
       .catch(this.handleError);
   }
