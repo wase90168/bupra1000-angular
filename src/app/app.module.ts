@@ -68,6 +68,7 @@ import {DimensionService} from './dimension/dimension.service';
 import {DimensionEditComponent} from './dimension/dimension-edit/dimension-edit.component';
 import {DimensionEditResolverService} from './dimension/dimension-edit/dimension-edit-resolver.service';
 import {CommentService} from './comment/comment.service';
+import {ChangePasswordComponent} from './change-password/change-password.component';
 
 
 @NgModule({
@@ -115,6 +116,7 @@ import {CommentService} from './comment/comment.service';
     DimensionComponent,
     CommentComponent,
     DimensionEditComponent,
+    ChangePasswordComponent,
 
   ],
   providers: [

@@ -38,6 +38,7 @@ import {PersonEditResolverService} from './person/person-edit/person-edit-resolv
 import {DimensionComponent} from './dimension/dimension.component';
 import {DimensionEditComponent} from './dimension/dimension-edit/dimension-edit.component';
 import {DimensionEditResolverService} from './dimension/dimension-edit/dimension-edit-resolver.service';
+import {ChangePasswordComponent} from './change-password/change-password.component';
 
 export const APP_ROUTES: Routes = [
   {
@@ -150,6 +151,12 @@ export const APP_ROUTES: Routes = [
   {
     path: 'breastfeeding',
     component: BreastfeedingComponent,
+    canActivate: [RouterGuard]
+
+  },
+  {
+    path: 'change-password',
+    component: ChangePasswordComponent,
     canActivate: [RouterGuard]
 
   },

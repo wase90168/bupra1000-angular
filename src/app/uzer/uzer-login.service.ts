@@ -54,9 +54,23 @@ export class UzerLoginService {
         (err) => {
           console.error('Error loading user info', err);
           reject(err);
+          this._storage.clear();
         }
       );
     }).then(exec => {this.isAdmin();});
+
+
+  }
+
+  changePassword(password: string, passwordOld: string): Promise<any> {
+    let url = this.appService.getBaseURL() + '/changePassword?username=' + this._storage.getItem('username') + '&password=' + password;
+
+    let headers = new HttpHeaders().set('Authorization', 'Basic ' + btoa(this._storage.getItem('username') + ':' + passwordOld)).set('Accept', 'application/json');
+
+    console.log(this.authorizationHeader().toString());
+
+
+    return this.http.put(url, null, {headers}).toPromise();
 
 
   }
