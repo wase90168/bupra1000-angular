@@ -111,6 +111,11 @@ export class UzerLoginService {
       if(role.name == 'ROLE_ADMIN' )
       {
         this.admin = true
+        this._storage.setItem("admin","true")
+      }
+      else
+      {
+        this._storage.setItem("admin","false")
       }
     }
 

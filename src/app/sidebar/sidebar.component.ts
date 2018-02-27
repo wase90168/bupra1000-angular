@@ -28,7 +28,15 @@ export class SidebarComponent implements OnInit {
         this.admin = true
       }
     }*/
-    this.admin = this.uzerLoginService.admin;
+
+    if(this.uzerLoginService._storage.getItem("admin") == "true")
+    {
+      this.admin = true;
+
+    }
+    else {
+      this.admin = false;
+    }
     return this.admin;
 
 
