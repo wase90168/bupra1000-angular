@@ -1,4 +1,5 @@
-<h1>Breastfeeding Edit!</h1>
+<h1 *ngIf="breastfeeding != null">Breastfeeding Edit!</h1>
+<h1 *ngIf="breastfeeding == null">New Breastfeeding!</h1>
 <div>
   {{ message }}
 </div>

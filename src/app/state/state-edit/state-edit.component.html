@@ -1,4 +1,6 @@
-<h1>State Edit!</h1>
+<h1 *ngIf="state != null">State Edit!</h1>
+<h1 *ngIf="state == null">New State!</h1>
+
 <div>
   {{ message }}
 </div>

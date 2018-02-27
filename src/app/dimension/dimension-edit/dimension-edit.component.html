@@ -1,4 +1,5 @@
-<h1>Dimension Edit!</h1>
+<h1 *ngIf="dimension != null">Dimension Edit!</h1>
+<h1 *ngIf="dimension == null">New Dimension!</h1>
 <div>
   {{ message }}
 </div>

@@ -1,4 +1,5 @@
-<h1>Person Edit!</h1>
+<h1 *ngIf="person != null">Person Edit!</h1>
+<h1 *ngIf="person == null">New Person!</h1>
 <div>
   {{ message }}
 </div>
