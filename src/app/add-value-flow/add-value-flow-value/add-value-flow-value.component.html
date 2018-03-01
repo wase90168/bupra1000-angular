@@ -27,7 +27,7 @@
         <label>Dimension</label>
         <select class="form-control" [(ngModel)]="dimension" [ngModelOptions]="{standalone: true}">
           <option [ngValue]="dimension" selected *ngIf="dimension != null">{{dimension.dimension}}</option>
-          <option [ngValue]="null" selected *ngIf="dimension == null"></option>
+          <option [ngValue]="null" selected>-- not specified --</option>
           <option *ngFor="let c of dimensions" [ngValue]="c">{{c.dimension}}</option>
         </select>
       </div>
@@ -38,9 +38,7 @@
         <select class="form-control" [(ngModel)]="state" [ngModelOptions]="{standalone: true}"
                 (change)="saveState()">
           <option *ngIf="state != null" [ngValue]="state" selected>{{state.description}}</option>
-          <option *ngIf="state == null" [ngValue]="null" selected></option>
-
-
+          <option [ngValue]="null" selected>-- not specified --</option>
           <option *ngFor="let c of states" [ngValue]="c">{{c.description}}</option>
         </select>
       </div>

@@ -18,9 +18,7 @@
         <select class="form-control" [(ngModel)]="source" [ngModelOptions]="{standalone: true}"
                 (change)="saveSource()">
           <option *ngIf="source != null" [ngValue]="source" selected>{{source.name}}</option>
-          <option *ngIf="source == null" [ngValue]="null" selected></option>
-
-
+          <option [ngValue]="null" selected>-- not specified --</option>
           <option *ngFor="let c of sources" [ngValue]="c">{{c.name}}</option>
         </select>
       </div>
