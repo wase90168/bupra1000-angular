@@ -45,9 +45,6 @@ export class ValueEditComponent implements OnInit {
   comment1: Comment;
 
 
-
-
-
   constructor(private valueService: ValueService, private route: ActivatedRoute, private router: Router, private personService: PersonService,
               private stateService: StateService, private mrService: MrService, private sourceService: SourceService,
               private biomarkerService: BiomarkerService, private dimensionService: DimensionService, private commentService: CommentService/*, private commentService: CommentService*/) {
@@ -74,6 +71,7 @@ export class ValueEditComponent implements OnInit {
     else {
       this.comment1 = this.value.comment;
     }
+
 
   }
 

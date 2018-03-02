@@ -3,6 +3,7 @@ import {Value} from './value';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {ValueService} from './value.service';
+import {UzerLoginService} from "../uzer/uzer-login.service";
 
 
 @Component({
@@ -16,9 +17,12 @@ export class ValueComponent implements OnInit {
   public data: Observable<Value>;
   public message: string;
 
+  admin:boolean;
 
 
-  constructor(private route: ActivatedRoute, private router: Router,  private valueService: ValueService) {
+
+  constructor(private  uzerLoginService:UzerLoginService,
+    private route: ActivatedRoute, private router: Router,  private valueService: ValueService) {
 
   }
 
@@ -29,6 +33,16 @@ export class ValueComponent implements OnInit {
     console.log(this.getData());
 
     //this.pdfMaker();
+
+    if(this.uzerLoginService._storage.getItem("admin") == "true")
+    {
+      this.admin = true;
+
+    }
+    else {
+      this.admin = false;
+    }
+    return this.admin;
 
 
   }
@@ -46,7 +60,15 @@ export class ValueComponent implements OnInit {
   addValue()
   {
 
-    this.router.navigateByUrl("value-edit/0");
+    if(this.admin == true)
+    {
+      this.router.navigateByUrl("value-edit/0");
+
+    }
+    else{
+      this.router.navigateByUrl("add-value-flow/person")
+    }
+
 
   }
 

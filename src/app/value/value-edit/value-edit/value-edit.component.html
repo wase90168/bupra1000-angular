@@ -24,6 +24,7 @@
       <select class="form-control" [(ngModel)]="value.dimension" [ngModelOptions]="{standalone: true}">
         <option [ngValue]="value.dimension" selected *ngIf="value.dimension != null">{{value.dimension.dimension}}
         </option>
+        <option [ngValue]="null" selected>-- not specified --</option>
         <option *ngFor="let c of dimensions" [ngValue]="c">{{c.dimension}}</option>
       </select>
     </div>
@@ -32,6 +33,7 @@
       <label>Person</label>
       <select class="form-control" [(ngModel)]="value.person" [ngModelOptions]="{standalone: true}">
         <option [ngValue]="value.person" selected *ngIf="value.person != null">{{value.person.prefix}} {{value.person.suffix}}</option>
+        <option [ngValue]="null" selected>-- not specified --</option>
         <option *ngFor="let c of persons" [ngValue]="c">{{c.prefix}} {{c.suffix}}</option>
       </select>
     </div>
@@ -39,6 +41,7 @@
       <label>Source</label>
       <select class="form-control" [(ngModel)]="value.source" [ngModelOptions]="{standalone: true}">
         <option [ngValue]="value.source" selected *ngIf="value.source != null">{{value.source.name}}</option>
+        <option [ngValue]="null" selected>-- not specified --</option>
         <option *ngFor="let c of sources" [ngValue]="c">{{c.name}}</option>
       </select>
     </div>
@@ -48,6 +51,7 @@
       <label>MR</label>
       <select class="form-control" [(ngModel)]="value.mr" [ngModelOptions]="{standalone: true}">
         <option [ngValue]="value.mr" selected *ngIf="value.mr != null">{{value.mr.name}}</option>
+        <option [ngValue]="null" selected>-- not specified --</option>
         <option *ngFor="let c of mrs" [ngValue]="c">{{c.name}}</option>
       </select>
     </div>
@@ -56,6 +60,7 @@
       <label>Biomarker</label>
       <select class="form-control" [(ngModel)]="value.biomarker" [ngModelOptions]="{standalone: true}">
         <option [ngValue]="value.biomarker" selected *ngIf="value.biomarker != null">{{value.biomarker.name}}</option>
+        <option [ngValue]="null" selected>-- not specified --</option>
         <option *ngFor="let c of biomarkers" [ngValue]="c">{{c.name}}</option>
       </select>
     </div>
@@ -65,6 +70,7 @@
       <label>State</label>
       <select class="form-control" [(ngModel)]="value.state" [ngModelOptions]="{standalone: true}">
         <option [ngValue]="value.state" selected *ngIf="value.state != null">{{value.state.description}}</option>
+        <option [ngValue]="null" selected>-- not specified --</option>
         <option *ngFor="let c of states" [ngValue]="c">{{c.description}}</option>
       </select>
     </div>

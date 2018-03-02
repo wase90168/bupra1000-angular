@@ -2,7 +2,7 @@
   <table class="table table-bordered">
     <thead>
     <tr>
-      <td><b>Delete</b></td>
+      <td *ngIf="admin == true"><b>Delete</b></td>
       <td><b>ID</b></td>
       <td><b>Value</b></td>
       <td><b>Dimension</b></td>
@@ -17,7 +17,7 @@
     <tbody>
     <tr *ngFor="let c of data" class="active"
         [ngStyle]="{ 'background-color': (c == selectedValue) ? 'lightblue' : ''  }">
-      <td>
+      <td *ngIf="admin == true">
         <form role="form" (submit)="deleteEntry(c.id)">
           <div class="form-group">
             <button type="submit" value="Delete" class="btn-xs btn-danger"><span
